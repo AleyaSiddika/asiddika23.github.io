@@ -1,614 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aleya Nur Mohol Siddika — Doctoral Researcher &amp; Software Engineer</title>
-  <meta name="description" content="Doctoral Researcher at the University of Eastern Finland. NLP · Machine Learning · Microservice Architecture. Joensuu, Finland." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aleya Nur Mohol Siddika | Software Engineer</title>
+  <meta name="description" content="Portfolio of Aleya Nur Mohol Siddika, a software engineer and doctoral researcher in Finland with experience in backend systems, intelligent software and technical leadership.">
   <link rel="icon" type="image/png" href="img/aleya.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
   <script>document.documentElement.classList.add('js');</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&amp;family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
-  <script>
-    if (window.location.hostname === 'www.aleyasiddika.me') {
-      window.location.replace('https://aleyasiddika.me' + window.location.pathname + window.location.search + window.location.hash);
-    }
-  </script>
 </head>
 <body>
-<a class="skip-link" href="#about">Skip to content</a>
+  <a class="skip-link" href="#about">Skip to content</a>
+  <div class="backdrop" aria-hidden="true"></div>
+  <div class="pointer-light" id="pointerLight" aria-hidden="true"></div>
+  <div class="progress" aria-hidden="true"><span id="scrollProgress"></span></div>
 
-<!-- Animated particle canvas -->
-<canvas id="bgCanvas" aria-hidden="true"></canvas>
-
-<!-- Cursor spotlight -->
-<div id="spotlight" aria-hidden="true"></div>
-
-<!-- Scroll progress -->
-<div class="scroll-bar-wrap" aria-hidden="true"><div class="scroll-bar" id="scrollBar"></div></div>
-
-<!-- ══════════════════════════════════════════════════════════
-     NAV
-     ══════════════════════════════════════════════════════════ -->
-<nav class="top-nav" id="topNav" aria-label="Primary navigation">
-  <div class="nav-inner">
-    <a href="#home" class="nav-brand">
-      <span class="brand-dot"></span>
-      <span>ALEYA · SIDDIKA</span>
-    </a>
-    <div class="nav-links">
-      <a href="#about"    class="nav-link">About</a>
-      <a href="#resume"   class="nav-link">Resume</a>
-      <a href="#stack"    class="nav-link">Stack</a>
-      <a href="#projects" class="nav-link">Projects</a>
-      <a href="#contact"  class="nav-link nav-cta">Contact ↗</a>
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="nav-shell">
+      <a class="signature" href="#home">Aleya <span>Siddika</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#journey">Journey</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#work">Portfolio</a>
+        <a class="nav-action" href="#contact">Connect</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false"><span></span><span></span></button>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <div class="nav-mobile" id="navMobile" aria-hidden="true">
-    <a href="#about">About</a>
-    <a href="#resume">Resume</a>
-    <a href="#stack">Stack</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
+  </nav>
 
-<!-- ══════════════════════════════════════════════════════════
-     HERO
-     ══════════════════════════════════════════════════════════ -->
-<section class="hero" id="home">
-  <div class="hero-grid">
-
-    <!-- Copy left -->
-    <div class="hero-copy">
-      <div class="hero-tag">
-        <span class="tag-pulse"></span>
-        Open for research collaborations &nbsp;·&nbsp; 2026
-      </div>
-
-      <h1 class="hero-title">
-        Research<br/>
-        <em class="accent">that ships.</em><br/>
-        Software that<br/>
-        <span class="stamp">survives.</span>
-      </h1>
-
-      <p class="hero-lede">
-        Doctoral researcher at the University of Eastern Finland — working at the
-        intersection of <strong>NLP</strong>, <strong>energy law</strong>, and
-        <strong>microservice architecture</strong>. 8+ years of shipping
-        systems that hold up under real-world load.
-      </p>
-
-      <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary">Explore work ↗</a>
-        <a href="./Aleya-Nur-Mohol-Siddika-Senior-Software-Engineer-Finland.pdf"
-           class="btn btn-ghost" target="_blank" rel="noopener">Download CV</a>
-      </div>
-
-      <div class="hero-meta">
-        <div class="meta-item">
-          <span class="meta-label">Based in</span>
-          <span class="meta-value">Joensuu, FI</span>
-        </div>
-        <div class="meta-sep"></div>
-        <div class="meta-item">
-          <span class="meta-label">Field</span>
-          <span class="meta-value">NLP · SE</span>
-        </div>
-        <div class="meta-sep"></div>
-        <div class="meta-item">
-          <span class="meta-label">Experience</span>
-          <span class="meta-value">8+ years</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Portrait right — glass-frame-reference.png is already a layered glass portrait -->
-    <div class="portrait-outer">
-      <div class="portrait-stage" id="portraitStage">
-        <!-- Extra glass depth layers behind the image -->
-        <div class="glass-layer gl-back-3"></div>
-        <div class="glass-layer gl-back-2"></div>
-        <div class="glass-layer gl-front">
-          <div class="portrait-img-wrap">
-            <!-- glass-frame-reference.png already has the beautiful layered glass frame effect -->
-            <img src="img/glass-frame-reference.png"
-                 alt="Aleya Nur Mohol Siddika"
-                 class="portrait-img" />
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Software Engineer &nbsp;|&nbsp; Doctoral Researcher &nbsp;|&nbsp; Finland</p>
+          <h1><span>Aleya Nur</span><br>Mohol Siddika</h1>
+          <p class="headline">Building elegant software experiences and dependable technology for meaningful real-world work.</p>
+          <p class="hero-text">Eight-plus years in software engineering, backend development and technical leadership, with a strong foundation in intelligent systems and applied machine learning.</p>
+          <div class="actions">
+            <a class="button primary" href="#work">Discover my work</a>
+            <a class="button outline" href="Aleya-Nur-Mohol-Siddika-Senior-Software-Engineer-Finland.pdf" target="_blank" rel="noopener">Download CV</a>
           </div>
-          <!-- CAD annotations -->
-          <div class="cad" aria-hidden="true">
-            <div class="cad-c tl"></div>
-            <div class="cad-c tr"></div>
-            <div class="cad-c bl"></div>
-            <div class="cad-c br"></div>
-            <span class="cad-t tl">A.S · 2026</span>
-            <span class="cad-t tr">UEF · FI</span>
-            <span class="cad-t bl">INTEL · PhD</span>
-            <span class="cad-t br">NLP · SE</span>
+          <div class="highlights" role="group" aria-label="Highlights">
+            <div><strong>8+</strong><span>Years Experience</span></div>
+            <div><strong>67</strong><span>Districts Reached</span></div>
+            <div><strong>M.Sc.</strong><span>Software Engineering</span></div>
           </div>
         </div>
 
-        <!-- Floating chips -->
-        <div class="float-chip fc-a">
-          <div class="chip-icon ci-indigo">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1 2.7 3 6 3s6-2 6-3v-5"/>
-            </svg>
+        <div class="portrait-showcase" id="portraitShowcase" data-tilt>
+          <div class="portrait-glow"></div>
+          <div class="glass-sheet rear"></div>
+          <div class="glass-sheet middle"></div>
+          <figure class="hero-portrait">
+            <img src="img/portraits/aleya-premium-3d.webp" alt="Aleya Nur Mohol Siddika in a formal portrait setting">
+          </figure>
+          <div class="floating-card identity">
+            <span>Portfolio</span>
+            <strong>Aleya Nur Mohol Siddika</strong>
           </div>
-          <div>
-            <div class="chip-lbl">Active</div>
-            <div class="chip-val">INTEL Project</div>
-          </div>
-        </div>
-
-        <div class="float-chip fc-b">
-          <div class="chip-icon ci-dark">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M8 7l-5 5 5 5"/><path d="M16 7l5 5-5 5"/><path d="M14 5l-4 14"/>
-            </svg>
-          </div>
-          <div>
-            <div class="chip-lbl">Tech Lead</div>
-            <div class="chip-val">2019 — 2024</div>
-          </div>
-        </div>
-
-        <div class="float-chip fc-c">
-          <div class="chip-icon ci-sky">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M13 3L4 14h7l-1 7 9-11h-7z"/>
-            </svg>
-          </div>
-          <div class="chip-val">8+ yrs</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Scroll indicator -->
-  <div class="scroll-hint" aria-hidden="true">
-    <div class="scroll-mouse"><div class="scroll-dot"></div></div>
-    <span>Scroll to explore</span>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════
-     ABOUT
-     ══════════════════════════════════════════════════════════ -->
-<section id="about" class="section reveal">
-  <div class="section-inner">
-    <div class="section-header">
-      <div class="section-idx">02 — About</div>
-      <h2 class="section-title">Researcher. <em>Engineer.</em><br/>Builder.</h2>
-      <p class="section-sub">A multidisciplinary practice spanning NLP, software architecture, and production systems — anchored by a decade of writing things that actually ship.</p>
-    </div>
-
-    <div class="about-wrap">
-
-      <!-- Portrait — portrait-outdoor.jpg for the about section -->
-      <div class="about-portrait-col">
-        <div class="about-frame-outer">
-          <div class="about-frame">
-            <img src="img/portrait-outdoor.jpg"
-                 alt="Aleya Nur Mohol Siddika outdoors" />
-          </div>
-        </div>
-        <div class="about-badge">
-          <div class="about-badge-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M12 2l2.4 2.1 3.2-.5.8 3.1 2.9 1.5-1.2 3 1.2 3-2.9 1.5-.8 3.1-3.2-.5L12 20l-2.4-2.1-3.2.5-.8-3.1L2.7 13.7l1.2-3-1.2-3L5.6 6.2l.8-3.1 3.2.5z"/>
-              <path d="M8 12l3 3 5-6"/>
-            </svg>
-          </div>
-          <div>
-            <div class="about-badge-lbl">Currently</div>
-            <div class="about-badge-val">PhD · UEF</div>
+          <div class="floating-card location">
+            <span>Based in</span>
+            <strong>Finland</strong>
           </div>
         </div>
       </div>
+      <div class="scroll-cue">Scroll to explore</div>
+    </section>
 
-      <!-- Copy -->
-      <div class="about-copy">
-        <h3 class="about-eyebrow">I'm Aleya Nur Mohol Siddika</h3>
-        <h4 class="about-headline">Doctoral Researcher at the University of Eastern Finland, advancing the general doctrine of energy law through NLP and network analysis.</h4>
-        <p>M.Sc. in Software Engineering from the <strong>University of Oulu</strong> (CGPA 4.08/5). Eight-plus years across <strong>Tech Lead</strong>, <strong>AI Researcher</strong>, and backend architecture roles — with deep expertise in Python, machine learning, and microservice systems.</p>
-        <p>My work sits where rigorous research meets the messy reality of shipping. Published in <strong>ICACIn 2024</strong> and <strong>OuluREPO</strong>. I like systems that are honest about their boundaries and graphs that earn the ink.</p>
-
-        <div class="about-info-grid">
-          <div class="about-info-item"><div class="about-info-key">Location</div><div class="about-info-val">Joensuu, Finland</div></div>
-          <div class="about-info-item"><div class="about-info-key">Languages</div><div class="about-info-val">Bangla · English</div></div>
-          <div class="about-info-item"><div class="about-info-key">Field</div><div class="about-info-val">NLP · Legal-Tech</div></div>
-          <div class="about-info-item"><div class="about-info-key">Available</div><div class="about-info-val">Research &amp; advisory</div></div>
-        </div>
-
-        <div class="traits">
-          <span class="trait">Dependable</span>
-          <span class="trait">Active listener</span>
-          <span class="trait">Creative</span>
-          <span class="trait">Confident</span>
-        </div>
-
-        <div class="hero-actions about-actions">
-          <a href="./Aleya-Nur-Mohol-Siddika-Senior-Software-Engineer-Finland.pdf"
-             class="btn btn-primary" target="_blank" rel="noopener">Download CV ↓</a>
-          <a href="#contact" class="btn btn-ghost">Get in touch</a>
-        </div>
+    <section class="section about" id="about">
+      <div class="section-title reveal">
+        <p class="eyebrow">About Aleya</p>
+        <h2>A thoughtful builder with a creative, technical mind.</h2>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════
-     RESUME
-     ══════════════════════════════════════════════════════════ -->
-<section id="resume" class="section reveal">
-  <div class="section-inner">
-    <div class="section-header">
-      <div class="section-idx">03 — Resume</div>
-      <h2 class="section-title">A professional <em>journey</em><br/>of research &amp; shipping.</h2>
-      <p class="section-sub">Six milestones, one thread: each role pushed the next layer of system thinking.</p>
-    </div>
-
-    <div class="timeline">
-      <div class="tl-spine" aria-hidden="true"></div>
-
-      <!-- 2025 — even child, year left card right -->
-      <div class="tl-item">
-        <div class="tl-year-block tl-reveal" style="--tl-dir:-28px">
-          <div class="tl-year">2025</div>
-          <div class="tl-role">Doctoral Researcher</div>
-          <div class="tl-org">Univ. of Eastern Finland</div>
+      <div class="about-layout">
+        <div class="photo-stack reveal" data-tilt>
+          <div class="photo-frame">
+            <img src="img/portrait-outdoor.jpg" alt="Aleya Nur Mohol Siddika outdoors in Finland">
+          </div>
+          <div class="photo-caption">Joensuu, Finland</div>
         </div>
-        <div class="tl-dot" aria-hidden="true"></div>
-        <div class="tl-card-slot tl-reveal" style="--tl-dir:28px">
-          <div class="tl-card">
-            <div class="tl-card-tag">School of Computing · INTEL Project</div>
-            <h4 class="tl-card-title">Doctoral Researcher</h4>
-            <div class="tl-card-sub">2025 — Present · Joensuu, Finland</div>
-            <ul class="tl-list">
-              <li>Building a general doctrine of energy law via NLP and network analysis.</li>
-              <li>Published in <strong>ICACIn 2024</strong> and <strong>OuluREPO</strong>.</li>
-              <li>Cross-disciplinary work at the intersection of law and software engineering.</li>
-            </ul>
+        <div class="about-content reveal">
+          <p class="lead">I am Aleya, a software engineer who enjoys transforming complex ideas into clean, reliable digital products.</p>
+          <p>My professional journey spans backend engineering, microservices, API design, machine learning and team leadership. I have built software for public services, financial platforms and hospitality operations.</p>
+          <p>I am also a doctoral researcher at the University of Eastern Finland, bringing analytical depth and curiosity into the way I design technology.</p>
+          <div class="detail-grid">
+            <div><span>Education</span><strong>M.Sc. Software Engineering, University of Oulu</strong></div>
+            <div><span>Current</span><strong>Doctoral Researcher, UEF</strong></div>
+            <div><span>Focus</span><strong>Backend, AI/ML, Scalable Applications</strong></div>
+            <div><span>Languages</span><strong>Bangla, English, Beginner Finnish</strong></div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- 2024 — odd child, card left year right -->
-      <div class="tl-item">
-        <div class="tl-card-slot tl-reveal" style="--tl-dir:-28px">
-          <div class="tl-card">
-            <div class="tl-card-tag">University of Oulu, Finland</div>
-            <h4 class="tl-card-title">M.Sc. Software Engineering</h4>
-            <div class="tl-card-sub">2023 – 2024 · CGPA 4.08 / 5.0</div>
-            <p class="tl-card-desc">Completed an M.Sc. in Software Engineering and Information Systems, with a CGPA of 4.08 / 5.0.</p>
+    <section class="section journey" id="journey">
+      <div class="section-title reveal center">
+        <p class="eyebrow">Professional Journey</p>
+        <h2>Experience shaped by delivery and leadership.</h2>
+      </div>
+      <div class="career">
+        <article class="career-card reveal">
+          <span class="year">2025 - Present</span>
+          <h3>Doctoral Researcher</h3>
+          <p class="company">University of Eastern Finland</p>
+          <p>Applying NLP and network analysis while expanding an established software engineering practice.</p>
+        </article>
+        <article class="career-card featured reveal">
+          <span class="year">2022 - 2023</span>
+          <h3>Tech Lead</h3>
+          <p class="company">Interlink Techsoft Ltd</p>
+          <p>Led distributed library and archive software delivered for use across 67 districts.</p>
+        </article>
+        <article class="career-card reveal">
+          <span class="year">2020 - 2022</span>
+          <h3>Backend Engineer</h3>
+          <p class="company">Nexus Lab</p>
+          <p>Developed APIs for blockchain payment and escrow platforms and optimized data fetching.</p>
+        </article>
+        <article class="career-card reveal">
+          <span class="year">2017 - 2020</span>
+          <h3>Software Engineer</h3>
+          <p class="company">Toiree Software</p>
+          <p>Built hotel operations software that reduced manual administrative work by 85%.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section expertise" id="expertise">
+      <div class="section-title reveal">
+        <p class="eyebrow">Expertise</p>
+        <h2>Technical craft, refined through experience.</h2>
+      </div>
+      <div class="expertise-grid">
+        <article class="expert-card reveal"><span>01</span><h3>Software Engineering</h3><p>Clean architecture, problem solving, reliable applications and maintainable product delivery.</p><div>Python / JavaScript / PHP / Git</div></article>
+        <article class="expert-card reveal"><span>02</span><h3>Backend Development</h3><p>APIs, services, data models and scalable server-side application workflows.</p><div>Node.js / Django / Laravel / REST</div></article>
+        <article class="expert-card reveal"><span>03</span><h3>Data &amp; Intelligence</h3><p>Machine learning and NLP applied to text, insight discovery and data-driven features.</p><div>TensorFlow / scikit-learn / NLP</div></article>
+        <article class="expert-card reveal"><span>04</span><h3>Delivery &amp; Cloud</h3><p>Modern development practices and deployment awareness across collaborative projects.</p><div>Docker / Kubernetes / AWS / Azure</div></article>
+      </div>
+    </section>
+
+    <section class="section work" id="work">
+      <div class="section-title reveal work-title">
+        <div>
+          <p class="eyebrow">Selected Portfolio</p>
+          <h2>Work with measurable value.</h2>
+        </div>
+        <a class="folio-link" href="projects.html">View all projects</a>
+      </div>
+      <div class="portfolio-grid">
+        <a class="portfolio-item reveal" href="projects.html#library">
+          <span>Public Services / Tech Lead</span>
+          <h3>Library &amp; Archive Management Platform</h3>
+          <p>Distributed software serving government operations across 67 districts.</p>
+          <strong>67 districts</strong>
+        </a>
+        <a class="portfolio-item reveal" href="projects.html#fintech">
+          <span>Backend Engineering</span>
+          <h3>Payment &amp; Escrow Services</h3>
+          <p>API and performance work for blockchain-based financial applications.</p>
+          <strong>0.881s retrieval</strong>
+        </a>
+        <a class="portfolio-item reveal" href="projects.html#hospitality">
+          <span>Product Development</span>
+          <h3>Hotel Management Software</h3>
+          <p>Digitized operations with a custom Laravel pricing workflow.</p>
+          <strong>85% less manual work</strong>
+        </a>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="contact-card reveal">
+        <div class="contact-copy">
+          <p class="eyebrow">Get In Touch</p>
+          <h2>Let's create something exceptional.</h2>
+          <p>Open to software engineering opportunities, meaningful technical collaborations and product conversations.</p>
+          <div class="actions">
+            <a class="button primary" href="mailto:aleyasiddika01@gmail.com">Email Aleya</a>
+            <a class="button outline" href="https://www.linkedin.com/in/aleya-nur-mohol-siddika/" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="button outline" href="https://github.com/AleyaSiddika" target="_blank" rel="noopener">GitHub</a>
           </div>
         </div>
-        <div class="tl-dot" aria-hidden="true"></div>
-        <div class="tl-year-block tl-reveal" style="--tl-dir:28px">
-          <div class="tl-year">2024</div>
-          <div class="tl-role">M.Sc. Graduate</div>
-          <div class="tl-org">University of Oulu</div>
+        <div class="contact-image">
+          <img src="img/portrait-formal.jpg" alt="Aleya Nur Mohol Siddika">
         </div>
       </div>
-
-      <!-- 2023 — even child, year left card right -->
-      <div class="tl-item">
-        <div class="tl-year-block tl-reveal" style="--tl-dir:-28px">
-          <div class="tl-year">2023</div>
-          <div class="tl-role">Tech Lead</div>
-          <div class="tl-org">Interlink Technologies</div>
-        </div>
-        <div class="tl-dot" aria-hidden="true"></div>
-        <div class="tl-card-slot tl-reveal" style="--tl-dir:28px">
-          <div class="tl-card">
-            <div class="tl-card-tag">Interlink Technologies Ltd</div>
-            <h4 class="tl-card-title">Tech Lead</h4>
-            <div class="tl-card-sub">Oct 2022 – Jul 2023</div>
-            <ul class="tl-list">
-              <li>Led Bangladesh Government library systems serving <strong>67 districts</strong>.</li>
-              <li>Owned architectural solutions for complex distributed systems.</li>
-              <li>Managed microservices delivering critical government infrastructure.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2022 — odd child, card left year right -->
-      <div class="tl-item">
-        <div class="tl-card-slot tl-reveal" style="--tl-dir:-28px">
-          <div class="tl-card">
-            <div class="tl-card-tag">Nexus Lab</div>
-            <h4 class="tl-card-title">Backend Engineer</h4>
-            <div class="tl-card-sub">Nov 2020 – Sep 2022</div>
-            <ul class="tl-list">
-              <li>Optimised data-fetching pipeline to <strong>0.88s</strong> latency.</li>
-              <li>Engineered blockchain-based payment &amp; escrow platforms.</li>
-              <li>Built REST APIs for microservices using Node.js and Laravel.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="tl-dot" aria-hidden="true"></div>
-        <div class="tl-year-block tl-reveal" style="--tl-dir:28px">
-          <div class="tl-year">2022</div>
-          <div class="tl-role">Backend Engineer</div>
-          <div class="tl-org">Nexus Lab</div>
-        </div>
-      </div>
-
-      <!-- 2020 — even child, year left card right -->
-      <div class="tl-item">
-        <div class="tl-year-block tl-reveal" style="--tl-dir:-28px">
-          <div class="tl-year">2020</div>
-          <div class="tl-role">Software Engineer</div>
-          <div class="tl-org">TOiREE IT Services</div>
-        </div>
-        <div class="tl-dot" aria-hidden="true"></div>
-        <div class="tl-card-slot tl-reveal" style="--tl-dir:28px">
-          <div class="tl-card">
-            <div class="tl-card-tag">TOiREE IT &amp; E-Commerce Services</div>
-            <h4 class="tl-card-title">Software Engineer</h4>
-            <div class="tl-card-sub">Nov 2017 – Oct 2020</div>
-            <ul class="tl-list">
-              <li>Reduced manual hotel pricing work by <strong>85%</strong> with custom rating calendar.</li>
-              <li>Built full hotel management system using Laravel (PHP).</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2017 — odd child, card left year right -->
-      <div class="tl-item">
-        <div class="tl-card-slot tl-reveal" style="--tl-dir:-28px">
-          <div class="tl-card">
-            <div class="tl-card-tag">American International University-Bangladesh</div>
-            <h4 class="tl-card-title">B.Sc. Software Engineering</h4>
-            <div class="tl-card-sub">2013 – 2017 · CGPA 3.69 / 4.0</div>
-            <p class="tl-card-desc">Foundation in software engineering, data structures, and algorithms at AIUB.</p>
-          </div>
-        </div>
-        <div class="tl-dot" aria-hidden="true"></div>
-        <div class="tl-year-block tl-reveal" style="--tl-dir:28px">
-          <div class="tl-year">2017</div>
-          <div class="tl-role">B.Sc. Graduate</div>
-          <div class="tl-org">AIUB, Bangladesh</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════
-     STACK
-     ══════════════════════════════════════════════════════════ -->
-<section id="stack" class="section reveal">
-  <div class="section-inner">
-    <div class="section-header">
-      <div class="section-idx">04 — Stack</div>
-      <h2 class="section-title">A precision <em>toolkit</em><br/>built over a decade.</h2>
-      <div class="stack-stats">
-        <div class="stat-pill"><span class="stat-num">8+</span><span class="stat-lbl">Years<br/>experience</span></div>
-        <div class="stat-pill"><span class="stat-num">15+</span><span class="stat-lbl">Key<br/>projects</span></div>
-        <div class="stat-pill"><span class="stat-num">02</span><span class="stat-lbl">Publications<br/>2024</span></div>
-      </div>
-    </div>
-
-    <div class="stack-grid">
-
-      <!-- Intelligence / NLP card -->
-      <div class="skill-card card-reveal">
-        <div class="skill-card-hd">
-          <div class="sc-icon indigo">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="20" r="2"/>
-              <circle cx="12" cy="12" r="2.5"/>
-              <path d="M7.5 7.5l3 3M16.5 7.5l-3 3M12 14.5v3.5"/>
-            </svg>
-          </div>
-          <h3>Intelligence Systems</h3>
-        </div>
-        <p>NLP, machine learning, and ETL pipelines. Specialising in legal-tech innovation through data-driven architectures and graph-style reasoning over legal corpora.</p>
-        <div class="skill-bars">
-          <div class="sb-row"><div class="sb-top"><span>NLP</span><span class="sb-pct">90%</span></div><div class="sb-track"><div class="sb-fill" style="--pct:90%"></div></div></div>
-          <div class="sb-row"><div class="sb-top"><span>Machine Learning</span><span class="sb-pct">90%</span></div><div class="sb-track"><div class="sb-fill" style="--pct:90%"></div></div></div>
-          <div class="sb-row"><div class="sb-top"><span>Python</span><span class="sb-pct">100%</span></div><div class="sb-track"><div class="sb-fill" style="--pct:100%"></div></div></div>
-          <div class="sb-row"><div class="sb-top"><span>SQL</span><span class="sb-pct">90%</span></div><div class="sb-track"><div class="sb-fill" style="--pct:90%"></div></div></div>
-          <div class="sb-row"><div class="sb-top"><span>ETL / Data Pipeline</span><span class="sb-pct">70%</span></div><div class="sb-track"><div class="sb-fill" style="--pct:70%"></div></div></div>
-          <div class="sb-row"><div class="sb-top"><span>Temporal Network Analysis</span><span class="sb-pct">50%</span></div><div class="sb-track"><div class="sb-fill" style="--pct:50%"></div></div></div>
-          <div class="sb-row"><div class="sb-top"><span>R</span><span class="sb-pct">40%</span></div><div class="sb-track"><div class="sb-fill" style="--pct:40%"></div></div></div>
-        </div>
-      </div>
-
-      <!-- Frameworks card -->
-      <div class="tools-card card-reveal">
-        <div class="skill-card-hd">
-          <div class="sc-icon sky">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/><path d="M3 17l9 5 9-5"/>
-            </svg>
-          </div>
-          <h3>Tools &amp; Frameworks</h3>
-        </div>
-        <p>The stack I reach for when precision and reliability matter.</p>
-        <div class="skill-bars">
-          <div class="sb-row"><div class="sb-top"><span>scikit-learn</span><span class="sb-pct">90%</span></div><div class="sb-track"><div class="sb-fill sky-bar" style="--pct:90%"></div></div></div>
-          <div class="sb-row"><div class="sb-top"><span>PyTorch</span><span class="sb-pct">80%</span></div><div class="sb-track"><div class="sb-fill sky-bar" style="--pct:80%"></div></div></div>
-          <div class="sb-row"><div class="sb-top"><span>TensorFlow / Keras</span><span class="sb-pct">70%</span></div><div class="sb-track"><div class="sb-fill sky-bar" style="--pct:70%"></div></div></div>
-          <div class="sb-row"><div class="sb-top"><span>Transformers (HuggingFace)</span><span class="sb-pct">80%</span></div><div class="sb-track"><div class="sb-fill sky-bar" style="--pct:80%"></div></div></div>
-          <div class="sb-row"><div class="sb-top"><span>spaCy / NLTK / TextBlob</span><span class="sb-pct">90%</span></div><div class="sb-track"><div class="sb-fill sky-bar" style="--pct:90%"></div></div></div>
-          <div class="sb-row"><div class="sb-top"><span>Microservices / Node.js</span><span class="sb-pct">90%</span></div><div class="sb-track"><div class="sb-fill sky-bar" style="--pct:90%"></div></div></div>
-        </div>
-        <div class="chip-cloud">
-          <span class="chip">FastAPI</span><span class="chip">Laravel</span><span class="chip">Node.js</span>
-          <span class="chip">PostgreSQL</span><span class="chip">Docker</span><span class="chip">Pandas</span>
-          <span class="chip">NumPy</span><span class="chip">Git</span><span class="chip">REST API</span>
-          <span class="chip">Blockchain</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════
-     PROJECTS
-     ══════════════════════════════════════════════════════════ -->
-<section id="projects" class="section reveal">
-  <div class="section-inner">
-    <div class="section-header">
-      <div class="section-idx">05 — Projects</div>
-      <h2 class="section-title">Selected <em>work.</em></h2>
-      <p class="section-sub">Research and production work drawn from my experience across legal-tech, public systems, financial platforms, and hospitality software.</p>
-    </div>
-
-    <div class="projects-grid">
-
-      <div class="proj-card card-reveal">
-        <div class="proj-visual pv-indigo">
-          <div class="pv-blob pv-blob-a"></div><div class="pv-blob pv-blob-b"></div>
-          <div class="pv-icon">
-            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-              <circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/>
-              <circle cx="12" cy="12" r="2.5"/>
-              <path d="M7.5 7.5l3 3M16.5 7.5l-3 3M12 14.5v3.5"/>
-            </svg>
-          </div>
-        </div>
-        <div class="proj-num">P · 01</div>
-        <h4 class="proj-title">INTEL Project · Energy Law</h4>
-        <p class="proj-desc">Doctoral research advancing the general doctrine of energy law through NLP, network analysis, and legal concept research.</p>
-        <div class="proj-tags"><span class="proj-tag">NLP</span><span class="proj-tag">Research</span><span class="proj-tag">UEF</span></div>
-      </div>
-
-      <div class="proj-card card-reveal">
-        <div class="proj-visual pv-sky">
-          <div class="pv-blob pv-blob-a"></div><div class="pv-blob pv-blob-b"></div>
-          <div class="pv-icon">
-            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-              <rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/>
-              <circle cx="7" cy="7" r="1"/><circle cx="7" cy="17" r="1"/>
-              <path d="M11 7h6M11 17h6"/>
-            </svg>
-          </div>
-        </div>
-        <div class="proj-num">P · 02</div>
-        <h4 class="proj-title">Library &amp; Archive Systems</h4>
-        <p class="proj-desc">Architectural and microservice work for Bangladesh Government library systems used across 67 districts.</p>
-        <div class="proj-tags"><span class="proj-tag">Microservices</span><span class="proj-tag">Public Sector</span></div>
-      </div>
-
-      <div class="proj-card card-reveal">
-        <div class="proj-visual pv-amber">
-          <div class="pv-blob pv-blob-a"></div><div class="pv-blob pv-blob-b"></div>
-          <div class="pv-icon">
-            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-              <circle cx="12" cy="12" r="9"/><path d="M10 8h3.5a2 2 0 0 1 0 4H10v4M10 12h3.5"/>
-            </svg>
-          </div>
-        </div>
-        <div class="proj-num">P · 03</div>
-        <h4 class="proj-title">Blockchain Payment &amp; Escrow</h4>
-        <p class="proj-desc">Backend work on cryptocurrency-based payment, escrow, staking, and swapping platforms at Nexus Lab.</p>
-        <div class="proj-tags"><span class="proj-tag">Backend</span><span class="proj-tag">Blockchain</span></div>
-      </div>
-
-      <div class="proj-card card-reveal">
-        <div class="proj-visual pv-green">
-          <div class="pv-blob pv-blob-a"></div><div class="pv-blob pv-blob-b"></div>
-          <div class="pv-icon">
-            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-              <path d="M13 3L4 14h7l-1 7 9-11h-7z"/>
-            </svg>
-          </div>
-        </div>
-        <div class="proj-num">P · 04</div>
-        <h4 class="proj-title">Hotel Management Software</h4>
-        <p class="proj-desc">Laravel-based operations software and a custom pricing calendar that reduced manual administrative work by 85%.</p>
-        <div class="proj-tags"><span class="proj-tag">Laravel</span><span class="proj-tag">Operations</span></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════
-     CONTACT
-     ══════════════════════════════════════════════════════════ -->
-<section id="contact" class="section reveal">
-  <div class="section-inner">
-    <div class="contact-card">
-      <div class="contact-inner">
-        <div class="cc-glow-a" aria-hidden="true"></div>
-        <div class="cc-glow-b" aria-hidden="true"></div>
-        <div class="cc-grid" aria-hidden="true"></div>
-
-        <div class="cc-split">
-
-          <!-- Formal portrait -->
-          <div class="cc-portrait-col">
-            <div class="cc-portrait-frame">
-              <img src="img/portrait-formal.jpg"
-                   alt="Aleya Nur Mohol Siddika — formal portrait"
-                   class="cc-portrait-img" />
-            </div>
-            <div class="cc-portrait-cap">
-              <span class="cc-portrait-name">Aleya Nur Mohol Siddika</span>
-              <span class="cc-portrait-role">Doctoral Researcher · UEF</span>
-            </div>
-          </div>
-
-          <!-- CTA content -->
-          <div class="cc-content">
-            <h2>Let's build something <em>lucid.</em></h2>
-            <p>Open to collaboration on AI research, legal-tech, and advanced software architecture.<br/>The fastest answer is a short, specific email.</p>
-            <div class="cc-actions">
-              <a href="mailto:aleyasiddika01@gmail.com" class="btn-white">
-                aleyasiddika01@gmail.com ↗
-              </a>
-              <a href="https://www.linkedin.com/in/aleya-nur-mohol-siddika/" class="btn-glass" target="_blank" rel="noopener">LinkedIn</a>
-              <a href="https://github.com/AleyaSiddika" class="btn-glass" target="_blank" rel="noopener">GitHub</a>
-            </div>
-            <div class="cc-meta">
-              <span>+358 417 231 362</span>
-              <span>·</span>
-              <span>Joensuu, Finland</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════
-     FOOTER
-     ══════════════════════════════════════════════════════════ -->
-<footer class="footer">
-  <div class="footer-inner">
-    <div>
-      <div class="footer-brand">
-        <span class="brand-dot"></span>
-        <span>ALEYA NUR MOHOL SIDDIKA</span>
-      </div>
-      <p class="footer-copy">© 2026 · Doctoral Researcher &amp; Software Engineer · Joensuu, Finland</p>
-    </div>
-    <div class="footer-links">
-      <a href="https://github.com/AleyaSiddika" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://www.linkedin.com/in/aleya-nur-mohol-siddika/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="mailto:aleyasiddika01@gmail.com">Email</a>
-      <a href="./Aleya-Nur-Mohol-Siddika-Senior-Software-Engineer-Finland.pdf" target="_blank" rel="noopener">CV</a>
-    </div>
-  </div>
-</footer>
-
-<script src="js/index.js"></script>
+    </section>
+  </main>
+  <footer class="footer">
+    <a class="signature" href="#home">Aleya <span>Siddika</span></a>
+    <p>Software Engineer &amp; Doctoral Researcher / Finland / 2026</p>
+  </footer>
+  <script src="js/index.js"></script>
 </body>
 </html>
