@@ -1,161 +1,90 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const togglenav = document.querySelector("#togglenav");
-  const menuIcon = document.querySelector("#menu_icon");
-  const slicknavbar = document.querySelector("#navbarSupportedContent");
+'use strict';
 
-  const sLinks = document.querySelectorAll(".s-menu a");
-  const socialIcons = document.querySelectorAll(".social-icons li");
+document.addEventListener('DOMContentLoaded', () => {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const progress = document.getElementById('scrollProgress');
+  const glow = document.getElementById('pointerLight');
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
 
-  var toptiptapCount = 0;
-
-  socialIcons.forEach((icon) => {
-    const tooltip = icon.children[1];
-
-    icon.onclick = (e) => {
-      if (tooltip != undefined && toptiptapCount > 0) {
-        tooltip.style.display == "none"
-          ? (tooltip.style.display = "block")
-          : (tooltip.style.display = "none");
-      }
-      toptiptapCount++;
-    };
-  });
-
-  sLinks.forEach((link) => {
-    link.onclick = () => {
-      slicknavbar.classList.remove("show");
-      menuIcon.className = "menu_icon_wrapper";
-    };
-  });
-
-  togglenav.addEventListener("click", () => {
-    if (menuIcon.className == "menu_icon_wrapper") {
-      menuIcon.className = "active_menu_icon_wrapper";
-    } else {
-      menuIcon.className = "menu_icon_wrapper";
-    }
-  });
-
-  const hAnimWrapper = document.querySelector(".h-content-wrapper");
-  const hFront = document.querySelector("#h-front");
-  const hBack = document.querySelector("#h-back");
-
-  function changeHeadingAnimation() {
-    if (
-      hFront.classList.contains("hf-effect") &&
-      hBack.classList.contains("hb-effect")
-    ) {
-      hFront.classList.remove("hf-effect");
-      hBack.classList.remove("hb-effect");
-    } else {
-      hFront.classList.add("hf-effect");
-      hBack.classList.add("hb-effect");
-    }
+  function updateProgress() {
+    if (!progress) return;
+    const available = document.documentElement.scrollHeight - window.innerHeight;
+    const percent = available > 0 ? window.scrollY / available * 100 : 0;
+    progress.style.width = `${Math.min(100, percent)}%`;
   }
 
-  var headingAnimCounter = 0;
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
 
-  var haedingAnim = setInterval(() => {
-    changeHeadingAnimation();
-    headingAnimCounter++;
-    if (headingAnimCounter > 50) {
-      clearInterval(haedingAnim);
-    }
-  }, 4000);
-
-  hAnimWrapper.addEventListener("click", (e) => {
-    e.stopImmediatePropagation();
-    clearInterval(haedingAnim);
-  });
-
-  hAnimWrapper.addEventListener("mouseover", (e) => {
-    e.stopImmediatePropagation();
-    clearInterval(haedingAnim);
-  });
-
-  hAnimWrapper.addEventListener("mouseleave", (e) => {
-    e.stopImmediatePropagation();
-    setTimeout(() => {
-      changeHeadingAnimation();
-    }, 4000);
-  });
-
-  const hImageBox = document.querySelector(".effect_art");
-  const hContWrap = document.querySelector(".h-content-wrap");
-  //NB: must translateY -5% in css in content
-
-  // dependecy of floatingOnScroll function
-  if (window.scrollY > hContWrap.offsetTop + hContWrap.offsetHeight) {
-    var ini = 5;
-  } else {
-    var ini = -5;
+  if (!reduceMotion && glow) {
+    window.addEventListener('pointermove', (event) => {
+      glow.style.setProperty('--x', `${event.clientX}px`);
+      glow.style.setProperty('--y', `${event.clientY}px`);
+    }, { passive: true });
   }
 
-  // dependecy of floatingOnScroll function
-  var prevPoint = window.scrollY;
+  if (!reduceMotion) {
+    document.querySelectorAll('[data-tilt]').forEach((panel) => {
+      panel.addEventListener('pointermove', (event) => {
+        const box = panel.getBoundingClientRect();
+        const x = (event.clientX - box.left) / box.width - 0.5;
+        const y = (event.clientY - box.top) / box.height - 0.5;
+        panel.style.transform = `perspective(1200px) rotateX(${-y * 3.5}deg) rotateY(${x * 4.5}deg)`;
+      });
+      panel.addEventListener('pointerleave', () => {
+        panel.style.transform = '';
+      });
+    });
 
-  window.addEventListener("scroll", () => {
-    stickyNavbar("customNavbar");
-    floatingOnScroll(hContWrap, 50);
-    floatingOnScroll(hImageBox, 10);
-  });
-
-  function floatingOnScroll(content, speed) {
-    if (
-      window.scrollY + window.innerHeight > content.offsetTop &&
-      window.scrollY < content.offsetTop + content.offsetHeight
-    ) {
-      if (window.scrollY - prevPoint > 0) {
-        if (ini > 5) {
-          ini = 5;
-        }
-        var inc = ini + speed / content.offsetHeight;
-      } else {
-        if (ini < -5) {
-          ini = -5;
-        }
-        var inc = ini - speed / content.offsetHeight;
-      }
-      ini = inc;
-      content.style.transform = `translateY(${inc}%)`;
-      prevPoint = window.scrollY;
-    }
-  }
-
-  function stickyNavbar(id) {
-    const socialIconsBar = document.querySelector("#social-icons-bar");
-    const headerContent = document.querySelector("#header-content");
-
-    const cnavbar = document.querySelector(`#${[id]}`);
-    const sticky = cnavbar.offsetTop;
-    if (window.pageYOffset >= sticky + 300) {
-      cnavbar.classList.add("NavbarSticky");
-      socialIconsBar.classList.add("fixed-s-i");
-      socialIconsBar.previousElementSibling.style.display = "block";
-      headerContent.classList.add("sticky-content");
-    } else {
-      cnavbar.classList.remove("NavbarSticky");
-      socialIconsBar.classList.remove("fixed-s-i");
-      socialIconsBar.previousElementSibling.style.display = "none";
-      headerContent.classList.remove("sticky-content");
-    }
-  }
-
-  toggleNavLinkClass("menu");
-  toggleNavLinkClass("s-menu");
-
-  // cann't sync between different viewport
-  function toggleNavLinkClass(menu) {
-    const navItems = document.querySelectorAll(`.${menu} li`);
-    navItems.forEach((navItem) => {
-      navItem.onclick = () => {
-        navItems.forEach((item) => {
-          if (item.classList.contains("active")) {
-            item.classList.remove("active");
-          }
-        });
-        navItem.classList.add("active");
-      };
+    document.querySelectorAll('[data-motion-card]').forEach((card) => {
+      card.addEventListener('pointermove', (event) => {
+        const box = card.getBoundingClientRect();
+        const x = (event.clientX - box.left) / box.width - 0.5;
+        const y = (event.clientY - box.top) / box.height - 0.5;
+        card.style.setProperty('--card-rx', `${-y * 2.4}deg`);
+        card.style.setProperty('--card-ry', `${x * 3.2}deg`);
+      });
+      card.addEventListener('pointerleave', () => {
+        card.style.setProperty('--card-rx', '0deg');
+        card.style.setProperty('--card-ry', '0deg');
+      });
     });
   }
+
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+    links.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+      links.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }));
+  }
+
+  const reveal = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        reveal.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach((node) => reveal.observe(node));
+
+  const navItems = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+  const sections = Array.from(document.querySelectorAll('main section[id]'));
+  function highlightNav() {
+    let active = sections[0] ? sections[0].id : '';
+    sections.forEach((section) => {
+      if (section.getBoundingClientRect().top <= window.innerHeight * 0.43) active = section.id;
+    });
+    navItems.forEach((item) => item.classList.toggle('active', item.hash === `#${active}`));
+  }
+  window.addEventListener('scroll', highlightNav, { passive: true });
+  highlightNav();
 });
