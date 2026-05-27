@@ -191,9 +191,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-
 .career-card {
   min-height: 298px; padding: 29px 25px; display: flex; flex-direction: column;
   border: 1px solid var(--line); border-radius: 22px; background: var(--surface);
-  transition: transform .25s, border-color .25s;
+  overflow: hidden; transition: transform .25s, border-color .25s, box-shadow .25s;
 }
-.career-card:hover { transform: translateY(-5px); border-color: var(--line-bright); }
+.career-card:hover { border-color: var(--line-bright); box-shadow: 0 20px 48px rgba(0,0,0,.25); }
 .career-card.featured { background: linear-gradient(145deg, rgba(216,174,107,.12), rgba(24,21,19,.65)); border-color: var(--line-bright); }
 .year { color: var(--gold); font: 500 10px var(--mono); letter-spacing: .17em; margin-bottom: 45px; }
 .career-card h3 { font: 600 30px/1.12 var(--serif); margin-bottom: 7px; }
@@ -203,13 +203,13 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-
 .expertise-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 15px; }
 .expert-card {
   min-height: 296px; padding: 27px 25px; border-radius: 22px;
-  border: 1px solid var(--line); background: var(--surface); transition: border-color .22s, transform .22s;
+  overflow: hidden; border: 1px solid var(--line); background: var(--surface); transition: border-color .22s, transform .22s, box-shadow .22s;
 }
-.expert-card:hover { border-color: var(--line-bright); transform: translateY(-4px); }
+.expert-card:hover { border-color: var(--line-bright); box-shadow: 0 20px 48px rgba(0,0,0,.24); }
 .expert-card > span { color: var(--gold); font: 500 11px var(--mono); letter-spacing: .18em; }
 .expert-card h3 { font: 600 30px/1.16 var(--serif); margin: 34px 0 15px; }
 .expert-card p { color: var(--muted); font-size: 13px; margin-bottom: 25px; }
-.expert-card div { color: var(--gold-light); font: 400 11px/1.8 var(--mono); }
+.expert-card > div:not(.card-object) { color: var(--gold-light); font: 400 11px/1.8 var(--mono); }
 .work-title {
   max-width: none; display: flex; align-items: end; justify-content: space-between; gap: 30px;
 }
@@ -220,10 +220,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-
 .portfolio-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
 .portfolio-item {
   min-height: 342px; display: flex; flex-direction: column; padding: 30px 27px;
-  border-radius: 23px; border: 1px solid var(--line); background: var(--surface);
+  overflow: hidden; border-radius: 23px; border: 1px solid var(--line); background: var(--surface);
   transition: transform .24s, border-color .24s, background .24s;
 }
-.portfolio-item:hover { transform: translateY(-5px); border-color: var(--line-bright); background: rgba(31,26,22,.85); }
+.portfolio-item:hover { border-color: var(--line-bright); background: rgba(31,26,22,.85); }
 .portfolio-item > span {
   color: var(--gold); font: 500 10px var(--mono); text-transform: uppercase;
   letter-spacing: .16em; margin-bottom: 43px;
@@ -234,6 +234,84 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-
   color: var(--gold-light); margin-top: auto; padding-top: 23px; border-top: 1px solid var(--line);
   font: 600 28px var(--serif);
 }
+.motion-card {
+  --card-rx: 0deg;
+  --card-ry: 0deg;
+  --card-lift: 0px;
+  position: relative;
+  transform-style: preserve-3d;
+}
+.js .motion-card.reveal.visible {
+  transform: perspective(1000px) rotateX(var(--card-rx)) rotateY(var(--card-ry)) translateY(var(--card-lift));
+}
+.motion-card:hover { --card-lift: -5px; }
+.card-object {
+  position: absolute; right: 20px; top: 19px; width: 58px; height: 58px;
+  pointer-events: none; transform: translateZ(38px); opacity: .88;
+}
+.card-object::before, .card-object::after, .card-object i { content: ""; position: absolute; display: block; }
+.object-orbit::before {
+  inset: 11px 2px; border: 1px solid rgba(241,211,161,.7); border-radius: 50%;
+  transform: rotateX(67deg) rotateZ(-18deg); animation: orbitTurn 6.8s linear infinite;
+}
+.object-orbit::after {
+  width: 27px; height: 27px; left: 15px; top: 15px; border-radius: 50%;
+  background: radial-gradient(circle at 34% 27%, #fff0ce, #c88c43 53%, #4a2d17);
+  box-shadow: 0 9px 20px rgba(205,145,68,.25); animation: objectFloat 4.8s ease-in-out infinite;
+}
+.object-orbit i:first-child {
+  width: 7px; height: 7px; right: 5px; top: 26px; border-radius: 50%; background: var(--gold-light);
+  box-shadow: 0 0 13px rgba(241,211,161,.7);
+}
+.object-prism::before {
+  width: 31px; height: 34px; top: 9px; left: 15px;
+  background: linear-gradient(135deg, rgba(255,235,201,.8), #bf8340 50%, #51321c);
+  clip-path: polygon(50% 0, 100% 27%, 100% 74%, 50% 100%, 0 74%, 0 27%);
+  animation: objectFloat 4.3s ease-in-out infinite;
+}
+.object-prism::after {
+  width: 34px; height: 11px; left: 13px; bottom: 6px;
+  border-radius: 50%; background: rgba(171,112,51,.2); filter: blur(3px);
+}
+.object-prism i:first-child {
+  left: 29px; top: 10px; bottom: 18px; border-left: 1px solid rgba(255,240,213,.62);
+}
+.object-sphere::before {
+  width: 34px; height: 34px; left: 12px; top: 10px; border-radius: 50%;
+  background: radial-gradient(circle at 32% 24%, #fff1d0, #d2a25c 38%, #6c4726 75%);
+  animation: objectFloat 5.1s ease-in-out infinite;
+}
+.object-sphere::after {
+  width: 51px; height: 18px; left: 3px; top: 21px; border: 1px solid rgba(241,211,161,.54);
+  border-radius: 50%; transform: rotate(-16deg); animation: orbitTurn 5.6s linear infinite;
+}
+.object-layers i {
+  width: 36px; height: 25px; left: 11px; border: 1px solid rgba(241,211,161,.55);
+  background: linear-gradient(135deg, rgba(241,211,161,.18), rgba(216,174,107,.035));
+  transform: skewX(-18deg) rotate(-8deg);
+}
+.object-layers i:first-child { top: 14px; animation: layerRise 4.4s ease-in-out infinite; }
+.object-layers i:last-child { top: 24px; left: 16px; animation: layerRise 4.4s ease-in-out infinite reverse; }
+.object-layers::after {
+  width: 37px; height: 8px; left: 12px; bottom: 8px; border-radius: 50%;
+  background: rgba(201,143,71,.2); filter: blur(3px);
+}
+@keyframes objectFloat { 50% { transform: translateY(-5px) rotate(2deg); } }
+@keyframes layerRise { 50% { transform: translateY(-5px) skewX(-18deg) rotate(-8deg); border-color: rgba(241,211,161,.85); } }
+@keyframes orbitTurn { to { transform: rotateX(67deg) rotateZ(342deg); } }
+
+.credentials { border-top: 1px solid rgba(216,174,107,.08); }
+.credential-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.credential-card {
+  min-height: 286px; padding: 31px 29px; overflow: hidden; border-radius: 23px;
+  border: 1px solid var(--line); background: var(--surface); transition: border-color .22s, box-shadow .22s;
+}
+.credential-card:hover { border-color: var(--line-bright); box-shadow: 0 22px 50px rgba(0,0,0,.25); }
+.credential-card.accent { border-color: var(--line-bright); background: linear-gradient(145deg, rgba(216,174,107,.11), rgba(24,21,19,.66)); }
+.credential-card > span { display: block; max-width: calc(100% - 62px); color: var(--gold); font: 500 10px/1.7 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+.credential-card h3 { font: 600 33px/1.13 var(--serif); letter-spacing: -.02em; margin: 44px 0 14px; }
+.credential-card p { color: var(--muted); font-size: 13px; margin-bottom: 19px; }
+.credential-card strong { color: var(--gold-light); font: 500 12px var(--mono); letter-spacing: .06em; }
 .contact-card {
   display: grid; grid-template-columns: 1fr 235px; align-items: center; gap: 64px;
   border: 1px solid var(--line-bright); border-radius: 30px; padding: clamp(36px,5vw,66px);
@@ -261,7 +339,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-
 @media (max-width: 1080px) {
   .hero-grid { grid-template-columns: 1fr; }
   .portrait-showcase { width: min(540px, 100%); height: 640px; margin: 26px auto 0; }
-  .career, .expertise-grid { grid-template-columns: repeat(2,1fr); }
+  .career, .expertise-grid, .credential-grid { grid-template-columns: repeat(2,1fr); }
 }
 @media (max-width: 820px) {
   .nav { top: 13px; padding: 0 15px; }
@@ -284,7 +362,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-
   .floating-card.identity { left: 16px; bottom: 37px; }
   .about-layout { grid-template-columns: 1fr; }
   .photo-stack { width: min(370px, 100%); }
-  .detail-grid, .career, .expertise-grid, .portfolio-grid { grid-template-columns: 1fr; }
+  .detail-grid, .career, .expertise-grid, .portfolio-grid, .credential-grid { grid-template-columns: 1fr; }
   .work-title { display: block; }
   .folio-link { display: inline-block; margin-top: 25px; }
   .contact-card { grid-template-columns: 1fr; }
@@ -301,4 +379,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; scroll-behavior: auto !important; }
   .pointer-light { display: none; }
   .js .reveal { opacity: 1; transform: none; }
+  .card-object::before, .card-object::after, .card-object i { animation: none !important; }
+  .js .motion-card.reveal.visible { transform: none; }
 }

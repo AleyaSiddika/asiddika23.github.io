@@ -36,6 +36,20 @@ document.addEventListener('DOMContentLoaded', () => {
         panel.style.transform = '';
       });
     });
+
+    document.querySelectorAll('[data-motion-card]').forEach((card) => {
+      card.addEventListener('pointermove', (event) => {
+        const box = card.getBoundingClientRect();
+        const x = (event.clientX - box.left) / box.width - 0.5;
+        const y = (event.clientY - box.top) / box.height - 0.5;
+        card.style.setProperty('--card-rx', `${-y * 2.4}deg`);
+        card.style.setProperty('--card-ry', `${x * 3.2}deg`);
+      });
+      card.addEventListener('pointerleave', () => {
+        card.style.setProperty('--card-rx', '0deg');
+        card.style.setProperty('--card-ry', '0deg');
+      });
+    });
   }
 
   if (toggle && links) {
