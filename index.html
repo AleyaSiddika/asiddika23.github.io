@@ -1,719 +1,614 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aleya's Profile</title>
-  <link rel="icon" type="image/png" href="/img/Ahsaan small edited tiny.png">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" />
-
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-    <script>
-      if (window.location.hostname === 'www.aleyasiddika.me') {
-        window.location.replace('https://aleyasiddika.me' + window.location.pathname + window.location.search + window.location.hash);
-      }
-    </script>
-  <script type="text/javascript" src="js/index.js"></script>
-
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <title>Aleya Nur Mohol Siddika — Doctoral Researcher &amp; Software Engineer</title>
+  <meta name="description" content="Doctoral Researcher at the University of Eastern Finland. NLP · Machine Learning · Microservice Architecture. Joensuu, Finland." />
+  <link rel="icon" type="image/png" href="img/aleya.png">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&amp;family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script>
+    if (window.location.hostname === 'www.aleyasiddika.me') {
+      window.location.replace('https://aleyasiddika.me' + window.location.pathname + window.location.search + window.location.hash);
+    }
+  </script>
 </head>
-
 <body>
-  <header class="heading_bg text-white" id="home">
-    <div class="d-flex top-nav align-items-center" id="customNavbar">
-      <div class="nav-brand">
-        <h5 class="lead m-0">
-          <a class="text-white" href="https://asiddika23.github.io/">Aleya Nur Mohol Siddika</a>
-        </h5>
-      </div>
+<a class="skip-link" href="#about">Skip to content</a>
 
-      <div class="header-social ml-auto d-table align-items-center mr-4">
-        <div class="fixed-icon d-sm-none position-fixed">
-          <i class="fas fa-comment-dots"></i>
-        </div>
-        <ul class="social-icons d-flex flex-column flex-sm-row" id="social-icons-bar">
-          <li class="faicon phone position-relative">
-            <a class="javascript:void(0)"><i class="fas fa-phone"></i></a>
-            <div class="social-tooltip position-absolute">
-              <span></span>
-              <div class="stooltip-wrap lead p-3">
-                <h6 class="">Mobile No</h6>
-                <p class="">
-                  <a class="text-primary" href="callto: +358417231362">
-                    +358417231362</a>
-                </p>
-              </div>
-            </div>
-          </li>
-          <li class="faicon email">
-            <a href="mailto:aleyasiddika01@gmail.com" title="email"><i class="far fa-envelope"></i></a>
-          </li>
-          <li class="faicon facebook">
-            <a href="https://www.facebook.com/alonur07" title="facebook"><i class="fab fa-facebook-f"></i></a>
-          </li>
-          <li class="faicon twitter">
-            <a href="#" title="twitter"><i class="fab fa-twitter"></i></a>
-          </li>
-          <li class="faicon youtube">
-            <a href="#" title="youtube"><i class="fab fa-youtube"></i></a>
-          </li>
-          <li class="faicon linkedin">
-            <a href="https://www.linkedin.com/in/aleya-nur-mohol-siddika/" title="linkedin"><i
-                class="fab fa-linkedin-in"></i></a>
-          </li>
-        </ul>
-      </div>
+<!-- Animated particle canvas -->
+<canvas id="bgCanvas" aria-hidden="true"></canvas>
 
-      <div class="ml-auto my-1">
-        <ul class="menu nav justify-content-between d-none d-lg-flex mr-4">
-          <li class="nav-item active">
-            <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#about">About</a>
-          </li>
+<!-- Cursor spotlight -->
+<div id="spotlight" aria-hidden="true"></div>
 
-          <li class="nav-item">
-            <a class="nav-link" href="#resume">Resume</a>
-          </li>
-          <!-- <li class="nav-item position-relative">
-            <a class="nav-link" href="https://asiddika23.github.io/comingSoon.html">Designs</a>
-            <div class="dropdown top-dropdown position-absolute">
-              <div class="dropdown-item">
-                <a class="dropdown-link" href="#">Photoshop</a>
-              </div>
-              <div class="dropdown-item">
-                <a class="dropdown-link" href="#">Illustrator</a>
-              </div>
-              <div class="dropdown-item">
-                <a class="dropdown-link" href="#">Web Design</a>
-              </div>
-            </div>
-          </li> -->
-          <li class="nav-item position-relative">
-            <a class="nav-link" href="#">Projects</a>
-            <div class="dropdown top-dropdown position-absolute">
-              <!-- <div class="dropdown-item">
-                <a class="dropdown-link" href="../projects.html#rjs">ReactJs</a>
-              </div>
-              <div class="dropdown-item">
-                <a class="dropdown-link" href="../projects.html#js">Javascript</a>
-              </div>
-              <div class="dropdown-item">
-                <a class="dropdown-link" href="../projects.html#dj">Django</a>
-              </div>
-              <div class="dropdown-item">
-                <a class="dropdown-link" href="../projects.html#ang">Angular</a>
-              </div> -->
-            </div>
-          </li>
-        </ul>
+<!-- Scroll progress -->
+<div class="scroll-bar-wrap" aria-hidden="true"><div class="scroll-bar" id="scrollBar"></div></div>
 
-        <div class="slicknav-main d-lg-none my-1">
-          <a class="
-                slicknav-btn
-                navbar-toggler
-                ml-auto
-                d-flex
-                justify-content-end
-                align-items-center
-                collapsed
-              " type="button" id="togglenav" data-toggle="collapse" data-target="#navbarSupportedContent" href="#">
-            <span class="navbar-fa-icon mr-2 lead text-white">Menu</span>
-            <div id="menu_icon" class="menu_icon_wrapper">
-              <div class="menu_icon"></div>
-            </div>
-          </a>
-          <div class="slicknav-nav collapse navbar-collapse pl-4" id="navbarSupportedContent">
-            <ul class="navbar-nav s-menu">
-              <li class="nav-item active">
-                <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#about">About</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="#resume">Resume</a>
-              </li>
-              <!-- <li class="nav-item">
-                <a class="nav-link d-flex pl-3" href="https://asiddika23.github.io/comingSoon.html">Designs</a>
-                <span class="slicknav-arrow ml-auto text-white" role="button" data-toggle="collapse"
-                  data-target="#navbarDropdown"><i class="fa fa-angle-down px-3"></i></span>
-                <div class="collapse s-ddown" id="navbarDropdown">
-                  <div class="dropdown-item">
-                    <a class="dropdown-link" href="#">Photoshop</a>
-                  </div>
-                  <div class="dropdown-item">
-                    <a class="dropdown-link" href="#">Illustrator</a>
-                  </div>
-                  <div class="dropdown-item">
-                    <a class="dropdown-link" href="#">Web Design</a>
-                  </div>
-                </div>
-              </li> -->
-              <li class="nav-item">
-                <a class="nav-link d-flex pl-3" href="#">Projects</a>
-                <span class="slicknav-arrow ml-auto text-white" role="button" data-toggle="collapse"
-                  data-target="#navbarDropdown2"><i class="fa fa-angle-down px-3"></i></span>
-
-                <!-- <div class="collapse s-ddown" id="navbarDropdown2">
-                  <div class="dropdown-item">
-                    <a class="dropdown-link" href="../projects.html#rjs">ReactJs</a>
-                  </div>
-                  <div class="dropdown-item">
-                    <a class="dropdown-link" href="../projects.html#js">Javascript</a>
-                  </div>
-                  <div class="dropdown-item">
-                    <a class="dropdown-link" href="../projects.html#dj">Django</a>
-                  </div>
-                  <div class="dropdown-item">
-                    <a class="dropdown-link" href="../projects.html#ang">Angular</a>
-                  </div>
-                </div> -->
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+<!-- ══════════════════════════════════════════════════════════
+     NAV
+     ══════════════════════════════════════════════════════════ -->
+<nav class="top-nav" id="topNav" aria-label="Primary navigation">
+  <div class="nav-inner">
+    <a href="#home" class="nav-brand">
+      <span class="brand-dot"></span>
+      <span>ALEYA · SIDDIKA</span>
+    </a>
+    <div class="nav-links">
+      <a href="#about"    class="nav-link">About</a>
+      <a href="#resume"   class="nav-link">Resume</a>
+      <a href="#stack"    class="nav-link">Stack</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#contact"  class="nav-link nav-cta">Contact ↗</a>
     </div>
-
-    <div class="header-content d-block d-sm-flex" id="header-content">
-      <article>
-        <div class="art">
-          <div class="art_img">
-            <div class="effect_art">
-              <div class="wrapper_art" style="height: 120px; width: 200px">
-                <div class="box_art">
-                  <div class="container_art">
-                    <div class="h-img">
-                      <!-- <span></span> -->
-                      <img src="img/aleya.png" alt="" height="auto" style="width: 162px;
-    border: 5px solid #FFF;" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-      <div class="ml-auto position-relative h-content-wrap">
-        <div class="position-relative h-content-wrapper">
-          <div id="h-front" class="
-                h-side-content h-front
-                ml-auto
-                mt-4
-                d-flex
-                align-items-end
-                flex-column
-                text-white
-              ">
-            <h2 class="display-4 mx-auto mt-4">Welcome!</h2>
-            <p class="lead px-4 text-center">
-              It's very nice to see you here.Explore the website to know more about me.
-            </p>
-            <a class="glow-link mb-4 mx-auto" href="#about">Explore More</a>
-          </div>
-          <div id="h-back" class="
-                h-side-content h-back
-                ml-auto
-                mt-4
-                d-flex
-                align-items-end
-                flex-column
-                text-white
-                position-absolute
-              ">
-            <h2 class="display-4 mx-auto mt-4">Hello!</h2>
-            <p class="lead px-4 text-center">
-              I'm a Motivated Learner & Dependable Software Engineer.
-            </p>
-            <a class="glow-link  mb-4 mx-auto" href="https://github.com/AleyaSiddika">Explore github profile</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <div class="about-section container-fluid" id="about">
-    <div class="content-block">
-      <h2 class="content-title text-center">About Me</h2>
-      <h6 class="content-subtitle text-center lead">
-        I'm Aleya Nur Mohol Siddika, a Software Engineer
-      </h6>
-      <div class="content-description mt-4">
-        <div class="container">
-          <p>
-            <div class="custom-about p-4 rounded shadow-sm " style="text-align: justify;">
-              <p>
-                I'm <strong>Aleya Nur Mohol Siddika</strong>, a <span class="highlight">Doctoral Researcher</span> at the University of Eastern Finland, Joensuu, working on the <em>INTEL Project</em> - advancing the general doctrine of energy law through <span class="highlight">NLP</span>, <span class="highlight">network analysis</span>, and legal concept research.
-              </p>
-              <p>
-                I hold an M.Sc. in Software Engineering (University of Oulu) and a B.Sc. from AIUB. My career includes roles as <strong>Tech Lead</strong>, <strong>Backend Engineer</strong>, and <strong>AI Researcher</strong>, with core expertise in <span class="highlight">Machine Learning</span>, <span class="highlight">Python</span>, and <span class="highlight">Microservice Architecture</span>.
-              </p>
-              <p>
-                I've published in <strong>ICACIn 2024</strong> and <strong>OuluREPO</strong>, hold certifications in AI and software architecture, and actively contribute through <span class="highlight">teaching</span> and <span class="highlight">volunteering</span>.
-              </p>
-            </div>
-            
-          </p>
-
-
-          <h5 class="mt-4">Interpersonal Traits</h5>
-          <ul class="d-block d-md-flex justify-content-between">
-            <li>Dependable</li>
-            <li>Active listener</li>
-            <li>Creative</li>
-            <li>Confident</li>
-          </ul>
-        </div>
-      </div>
-
-      <address class="content-info container">
-        <h5 class="mt-4">Personal Details</h5>
-        <div class="row">
-          <div class="col-12 col-md-6 single-info d-flex">
-            <span>Languages:</span>
-            <ul class="">
-              <li>Bangla(Native)</li>
-              <li>English(fluent)</li>
-            </ul>
-          </div>
-
-        </div>
-        <div class="row">
-          <div class="col-12 col-md-6 single-info d-flex">
-            <span>hobbies:</span>
-            <ul class="">
-              <li>Learning Technologies Update</li>
-              <li>Watching Movies and Series</li>
-              <li>Listening Music</li>
-            </ul>
-          </div>
-          <div class="col-12 col-md-6 single-info d-flex">
-            <span>From:</span>
-            <p>Joensuu, Finland</p>
-          </div>
-        </div>
-      </address>
-
-      <div class="buttons d-block d-md-flex container align-items-center">
-        <a class="btn content-download text-white my-2 mr-4"
-          href="./Aleya-Nur-Mohol-Siddika-Senior-Software-Engineer-Finland.pdf" role="button">Download CV</a>
-        <a class="btn content-download text-white my-2 mr-4" href="#" role="button">Explore Recent Projects</a>
-        <a class="btn content-download text-white my-2 mr-4" href="https://github.com/AleyaSiddika" role="button">GitHub
-          Profile</a>
-        <a class="btn content-download text-white my-2" href="#0" role="button">Services</a>
-      </div>
-    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
+  <div class="nav-mobile" id="navMobile" aria-hidden="true">
+    <a href="#about">About</a>
+    <a href="#resume">Resume</a>
+    <a href="#stack">Stack</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
 
-  <div class="resume-section container-fluid" id="resume">
-    <div class="content-block">
-      <h2 class="content-title text-center">Resume</h2>
-      <h6 class="content-subtitle text-center lead">
-        Please Check Out My resume
-      </h6>
-      <div class="content-description mt-4">
-        <div class="content-wrap">
-          <div class="container">
-            <h4 class="Lead mb-4">Experience</h4>
-            <hr />
+<!-- ══════════════════════════════════════════════════════════
+     HERO
+     ══════════════════════════════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-grid">
 
-            <div class="resume-item d-flex">
-              <span class="item-arrow">2025</span>
-              <div class="item-content">
-                <h5 class="item-title">University of Eastern Finland <small>Doctoral Researcher</small></h5>
-                <span class="item-details text-muted p-1">School of Computing | INTEL Project</span>
-                <p class="item-description">
-                  <ul>
-                    <li>Conducting PhD research focused on building a general doctrine of energy law.</li>
-                    <li>Utilizing NLP, network analysis, and doctrinal legal research methodologies.</li>
-                    <li>Working at the intersection of law and software engineering to support legal innovation.</li>
-                    <li>Published in ICACIn 2024 and OuluREPO; contributing to academic and legal-tech communities.</li>
-                  </ul>
-                </p>
-              </div>
-            </div>
-            
+    <!-- Copy left -->
+    <div class="hero-copy">
+      <div class="hero-tag">
+        <span class="tag-pulse"></span>
+        Open for research collaborations &nbsp;·&nbsp; 2026
+      </div>
 
-            <div class="resume-item d-flex">
-              <span class="item-arrow">2024</span>
-              <div class="item-content">
-                <h5 class="item-title">University of Oulu (Oulun yliopisto), Finland <small> November ’24 </small></h5>
-                <span class="item-details text-muted p-1">Completed MSc in Software Engineering And Information
-                  System</span>
-                <p class="item-description">
+      <h1 class="hero-title">
+        Research<br/>
+        <em class="accent">that ships.</em><br/>
+        Software that<br/>
+        <span class="stamp">survives.</span>
+      </h1>
 
-                </p>
-              </div>
-            </div>
+      <p class="hero-lede">
+        Doctoral researcher at the University of Eastern Finland — working at the
+        intersection of <strong>NLP</strong>, <strong>energy law</strong>, and
+        <strong>microservice architecture</strong>. 8+ years of shipping
+        systems that hold up under real-world load.
+      </p>
 
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">Explore work ↗</a>
+        <a href="./Aleya-Nur-Mohol-Siddika-Senior-Software-Engineer-Finland.pdf"
+           class="btn btn-ghost" target="_blank" rel="noopener">Download CV</a>
+      </div>
 
-            <div class="resume-item d-flex">
-              <span class="item-arrow">2023</span>
-              <div class="item-content">
-                <h5 class="item-title">Interlink Technologies Ltd <small> October ’22 - July '23</small></h5>
-                <span class="item-details text-muted p-1">Tech Lead </span>
-                <p class="item-description">
-                <ul>
+      <div class="hero-meta">
+        <div class="meta-item">
+          <span class="meta-label">Based in</span>
+          <span class="meta-value">Joensuu, FI</span>
+        </div>
+        <div class="meta-sep"></div>
+        <div class="meta-item">
+          <span class="meta-label">Field</span>
+          <span class="meta-value">NLP · SE</span>
+        </div>
+        <div class="meta-sep"></div>
+        <div class="meta-item">
+          <span class="meta-label">Experience</span>
+          <span class="meta-value">8+ years</span>
+        </div>
+      </div>
+    </div>
 
-                  <li>Worked on Library Research and Archive Management System of the Parliament of
-                    Bangladesh Government. (https://library.parliament.gov.bd:8080/) (https://library.sust.edu ,
-                    https://pustlib.intertechbd.com)
-                  </li>
-
-                  <li>Provided architectural solutions for complex business logic in distributed systems. </li>
-                  <li>Managed microservices development, ensuring efficient projects which are used by
-                    the 67 districts.
-                  </li>
-                  <li>Collaborated across teams, achieving project milestones and delivering high-quality
-                    software solutions.
-                  </li>
-
-
-                </ul>
-                </p>
-              </div>
-            </div>
-
-
-            <div class="resume-item d-flex">
-              <span class="item-arrow">2022</span>
-              <div class="item-content">
-                <h5 class="item-title">Nexus Lab <small>November 2020 – September 2022</small></h5>
-                <span class="item-details text-muted p-1">Backend Engineer</span>
-                <p class="item-description">
-                  <ul>
-                    <li>Indexed field to fetch data of users to reduce the fetching time to 0.881s.</li>
-                    <li>Worked on a payment platform based on blockchain technology.</li>
-                    <li>Provided REST APIs for multiple microservices using Node.js for Flutter and MLM projects.</li>
-                    <li>Worked on an escrow platform based on cryptocurrency.</li>
-                    <li>Provided API for staking and swapping platform based on cryptocurrency using Laravel.</li>
-                  </ul>
-                </p>
-              </div>
-            </div>
-            
-            <div class="resume-item d-flex">
-              <span class="item-arrow">2020</span>
-              <div class="item-content">
-                <h5 class="item-title">TOiREE IT and E-Commerce Services <small>November 2017 – October 2020</small></h5>
-                <span class="item-details text-muted p-1">Software Engineer</span>
-                <p class="item-description">
-                  <ul>
-                    <li>Boosted the productivity of administrative work by building a custom rating calendar using PHP to manage hotel pricing and room info—reduced manual work by 85% with 100% data accuracy.</li>
-                    <li>Built hotel management software using Laravel to streamline facilities and digitize manual processes.</li>
-                  </ul>
-                </p>
-              </div>
-            </div>
-            
-            <div class="resume-item d-flex">
-              <span class="item-arrow">2018</span>
-              <div class="item-content">
-                <h5 class="item-title">MCC LTD <small>July 2018 – November 2018</small></h5>
-                <span class="item-details text-muted p-1">Trainer</span>
-                <p class="item-description">
-                  <ul>
-                    <li>Trained and managed students of various age groups under a government project.</li>
-                  </ul>
-                </p>
-              </div>
-            </div>
-            
-
-
-
+    <!-- Portrait right — glass-frame-reference.png is already a layered glass portrait -->
+    <div class="portrait-outer">
+      <div class="portrait-stage" id="portraitStage">
+        <!-- Extra glass depth layers behind the image -->
+        <div class="glass-layer gl-back-3"></div>
+        <div class="glass-layer gl-back-2"></div>
+        <div class="glass-layer gl-front">
+          <div class="portrait-img-wrap">
+            <!-- glass-frame-reference.png already has the beautiful layered glass frame effect -->
+            <img src="img/glass-frame-reference.png"
+                 alt="Aleya Nur Mohol Siddika"
+                 class="portrait-img" />
+          </div>
+          <!-- CAD annotations -->
+          <div class="cad" aria-hidden="true">
+            <div class="cad-c tl"></div>
+            <div class="cad-c tr"></div>
+            <div class="cad-c bl"></div>
+            <div class="cad-c br"></div>
+            <span class="cad-t tl">A.S · 2026</span>
+            <span class="cad-t tr">UEF · FI</span>
+            <span class="cad-t bl">INTEL · PhD</span>
+            <span class="cad-t br">NLP · SE</span>
           </div>
         </div>
-        <div class="content-wrap mt-4">
-          <div class="container">
-            <h4 class="Lead mb-4">Education</h4>
-            <hr />
-            <div class="resume-item d-flex">
-              <span class="item-arrow">2024</span>
-              <div class="item-content">
-                <h5 class="item-title">Master of Science</h5>
-                <span class="item-details text-muted p-1">MSc in Software Engineering And Information System
-                  University of Oulu (Oulun yliopisto), Finland.</span>
-                <div class="item-description  d-block d-sm-flex">
-                  <div class="single-info d-flex mr-4">
-                    <span>Year:</span>
-                    <p>2023 – 2024 </p>
-                  </div>
-                  <div class="single-info d-flex">
-                    <span>CGPA:</span>
-                    <p>4.08 out of 5</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="resume-item d-flex">
-              <span class="item-arrow">2021</span>
-              <div class="item-content">
-                <h5 class="item-title">Graduate</h5>
-                <span class="item-details text-muted p-1">BSc in Software Engineering at American International
-                  University-Bangladesh</span>
-                <div class="item-description  d-block d-sm-flex">
-                  <div class="single-info d-flex mr-4">
-                    <span>Year:</span>
-                    <p>2013 – 2017 </p>
-                  </div>
-                  <div class="single-info d-flex">
-                    <span>CGPA:</span>
-                    <p>3.69 out of 4</p>
-                  </div>
-                </div>
-              </div>
-            </div>
 
+        <!-- Floating chips -->
+        <div class="float-chip fc-a">
+          <div class="chip-icon ci-indigo">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1 2.7 3 6 3s6-2 6-3v-5"/>
+            </svg>
+          </div>
+          <div>
+            <div class="chip-lbl">Active</div>
+            <div class="chip-val">INTEL Project</div>
           </div>
         </div>
-        <div class="content-wrap mt-4">
-          <div class="container">
-            <div class="row">
-              <h4 class="col-lg-12 Lead mb-4">My Skills</h4>
-              <hr class="col-lg-12" />
-              <div class="skill-wrap col-lg-6">
-                <h5 class="item-title mt-4">Skills</h5>
-                <span class="item-details text-muted p-1">My Skill representation on NLP, ML and Web Technologies</span>
-                <div class="skill mt-4">
-                  <ul class="pl-0 mb-0">
-                    <li class="d-flex">
-                      <p>NLP</p>
-                      <span class="ml-auto">
-                        <div class="cylinder">
-                          <div class="cy_container"></div>
-                          <div class="cy_percent_wrap">
-                            <div class="cy_percent" style="width: 90%">
-                              <span>90%</span>
-                            </div>
-                          </div>
-                        </div>
-                      </span>
-                    </li>
-                    <li class="d-flex">
-                      <p>Machine Learning</p>
-                      <span class="ml-auto">
-                        <div class="cylinder">
-                          <div class="cy_container"></div>
-                          <div class="cy_percent_wrap">
-                            <div class="cy_percent" style="width: 90%">
-                              <span>90%</span>
-                            </div>
-                          </div>
-                        </div>
-                      </span>
-                    </li>
-                    <li class="d-flex">
-                      <p>Python</p>
-                      <span class="ml-auto">
-                        <div class="cylinder">
-                          <div class="cy_container"></div>
-                          <div class="cy_percent_wrap">
-                            <div class="cy_percent" style="width: 100%">
-                              <span>100%</span>
-                            </div>
-                          </div>
-                        </div>
-                      </span>
-                    </li>
-                    <li class="d-flex">
-                      <p>ETL|Data pipeline</p>
-                      <span class="ml-auto">
-                        <div class="cylinder">
-                          <div class="cy_container"></div>
-                          <div class="cy_percent_wrap">
-                            <div class="cy_percent" style="width: 70%">
-                              <span>70%</span>
-                            </div>
-                          </div>
-                        </div>
-                      </span>
-                    </li>
-                    <li class="d-flex">
-                      <p>SQL</p>
-                      <span class="ml-auto">
-                        <div class="cylinder">
-                          <div class="cy_container"></div>
-                          <div class="cy_percent_wrap">
-                            <div class="cy_percent" style="width: 90%">
-                              <span>90%</span>
-                            </div>
-                          </div>
-                        </div>
-                      </span>
-                    </li>
 
-                    <li class="d-flex">
-                      <p>TNA (Temporal)</p>
-                      <span class="ml-auto">
-                        <div class="cylinder">
-                          <div class="cy_container"></div>
-                          <div class="cy_percent_wrap">
-                            <div class="cy_percent" style="width: 50%">
-                              <span>50%</span>
-                            </div>
-                          </div>
-                        </div>
-                      </span>
-                    </li>
-
-
-                    <li class="d-flex">
-                      <p>R</p>
-                      <span class="ml-auto">
-                        <div class="cylinder">
-                          <div class="cy_container"></div>
-                          <div class="cy_percent_wrap">
-                            <div class="cy_percent" style="width: 40%">
-                              <span>40%</span>
-                            </div>
-                          </div>
-                        </div>
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="skill-wrap tools col-lg-6">
-                <h5 class="item-title mt-4">Tools and frameworks</h5>
-                <span class="item-details text-muted p-1">My Skill representation on tools & Frameworks</span>
-                <div class="skill mt-4">
-                  <ul class="pl-0 mb-0">
-                    <li class="d-flex">
-                      <p>scikit-learn</p>
-                      <span class="ml-auto">
-                        <div class="cylinder">
-                          <div class="cy_container"></div>
-                          <div class="cy_percent_wrap">
-                            <div class="cy_percent" style="width: 90%">
-                              <span>90%</span>
-                            </div>
-                          </div>
-                        </div>
-                      </span>
-                    </li>
-                    <li class="d-flex">
-                      <p>TensorFlow/Keras</p>
-                      <span class="ml-auto">
-                        <div class="cylinder">
-                          <div class="cy_container"></div>
-                          <div class="cy_percent_wrap">
-                            <div class="cy_percent" style="width: 70%">
-                              <span>70%</span>
-                            </div>
-                          </div>
-                        </div>
-                      </span>
-                    </li>
-                    <li class="d-flex">
-                      <p>PyTorch</p>
-                      <span class="ml-auto">
-                        <div class="cylinder">
-                          <div class="cy_container"></div>
-                          <div class="cy_percent_wrap">
-                            <div class="cy_percent" style="width: 80%">
-                              <span>80%</span>
-                            </div>
-                          </div>
-                        </div>
-                      </span>
-                    </li>
-                    <li class="d-flex">
-                      <p>spaCy</p>
-                      <span class="ml-auto">
-                        <div class="cylinder">
-                          <div class="cy_container"></div>
-                          <div class="cy_percent_wrap">
-                            <div class="cy_percent" style="width: 70%">
-                              <span>70%</span>
-                            </div>
-                          </div>
-                        </div>
-                      </span>
-                    </li>
-                    <li class="d-flex">
-                      <p>NLTK|TextBlob|VEDAR</p>
-                      <span class="ml-auto">
-                        <div class="cylinder">
-                          <div class="cy_container"></div>
-                          <div class="cy_percent_wrap">
-                            <div class="cy_percent" style="width: 90%">
-                              <span>90%</span>
-                            </div>
-                          </div>
-                        </div>
-                      </span>
-                    </li>
-
-                    <li class="d-flex">
-                      <p>transformers</p>
-                      <span class="ml-auto">
-                        <div class="cylinder">
-                          <div class="cy_container"></div>
-                          <div class="cy_percent_wrap">
-                            <div class="cy_percent" style="width: 80%">
-                              <span>80%</span>
-                            </div>
-                          </div>
-                        </div>
-                      </span>
-                    </li>
-                    <li class="d-flex">
-                      <p>Microservice</p>
-                      <span class="ml-auto">
-                        <div class="cylinder">
-                          <div class="cy_container"></div>
-                          <div class="cy_percent_wrap">
-                            <div class="cy_percent" style="width: 90%">
-                              <span>90%</span>
-                            </div>
-                          </div>
-                        </div>
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div class="mt-4">
-                  <span class="item-details mt-4 text-muted p-1">Tools I use during Coding</span>
-                  <img src="img/tools and framework.png" alt="tools and frameworks" width="100%" height="auto"
-                    style="max-width: 960px" />
-                </div>
-              </div>
-            </div>
+        <div class="float-chip fc-b">
+          <div class="chip-icon ci-dark">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M8 7l-5 5 5 5"/><path d="M16 7l5 5-5 5"/><path d="M14 5l-4 14"/>
+            </svg>
           </div>
+          <div>
+            <div class="chip-lbl">Tech Lead</div>
+            <div class="chip-val">2019 — 2024</div>
+          </div>
+        </div>
+
+        <div class="float-chip fc-c">
+          <div class="chip-icon ci-sky">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M13 3L4 14h7l-1 7 9-11h-7z"/>
+            </svg>
+          </div>
+          <div class="chip-val">8+ yrs</div>
         </div>
       </div>
     </div>
   </div>
 
-  <footer>
-    <div class="ft_bg">
-      <div class="container-fluid position-relative">
-        <div class="mx-center copyright mx-auto d-table mt-2 mt-sm-4 text-white">
-          Copyright © 2024,
-          <a class="text-white" href="https://asiddika23.github.io/">Aleya Nur Mohol Siddika.</a>
-          <small>(All Rights Reserved)</small>
+  <!-- Scroll indicator -->
+  <div class="scroll-hint" aria-hidden="true">
+    <div class="scroll-mouse"><div class="scroll-dot"></div></div>
+    <span>Scroll to explore</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     ABOUT
+     ══════════════════════════════════════════════════════════ -->
+<section id="about" class="section reveal">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-idx">02 — About</div>
+      <h2 class="section-title">Researcher. <em>Engineer.</em><br/>Builder.</h2>
+      <p class="section-sub">A multidisciplinary practice spanning NLP, software architecture, and production systems — anchored by a decade of writing things that actually ship.</p>
+    </div>
+
+    <div class="about-wrap">
+
+      <!-- Portrait — portrait-outdoor.jpg for the about section -->
+      <div class="about-portrait-col">
+        <div class="about-frame-outer">
+          <div class="about-frame">
+            <img src="img/portrait-outdoor.jpg"
+                 alt="Aleya Nur Mohol Siddika outdoors" />
+          </div>
+        </div>
+        <div class="about-badge">
+          <div class="about-badge-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M12 2l2.4 2.1 3.2-.5.8 3.1 2.9 1.5-1.2 3 1.2 3-2.9 1.5-.8 3.1-3.2-.5L12 20l-2.4-2.1-3.2.5-.8-3.1L2.7 13.7l1.2-3-1.2-3L5.6 6.2l.8-3.1 3.2.5z"/>
+              <path d="M8 12l3 3 5-6"/>
+            </svg>
+          </div>
+          <div>
+            <div class="about-badge-lbl">Currently</div>
+            <div class="about-badge-val">PhD · UEF</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copy -->
+      <div class="about-copy">
+        <h3 class="about-eyebrow">I'm Aleya Nur Mohol Siddika</h3>
+        <h4 class="about-headline">Doctoral Researcher at the University of Eastern Finland, advancing the general doctrine of energy law through NLP and network analysis.</h4>
+        <p>M.Sc. in Software Engineering from the <strong>University of Oulu</strong> (CGPA 4.08/5). Eight-plus years across <strong>Tech Lead</strong>, <strong>AI Researcher</strong>, and backend architecture roles — with deep expertise in Python, machine learning, and microservice systems.</p>
+        <p>My work sits where rigorous research meets the messy reality of shipping. Published in <strong>ICACIn 2024</strong> and <strong>OuluREPO</strong>. I like systems that are honest about their boundaries and graphs that earn the ink.</p>
+
+        <div class="about-info-grid">
+          <div class="about-info-item"><div class="about-info-key">Location</div><div class="about-info-val">Joensuu, Finland</div></div>
+          <div class="about-info-item"><div class="about-info-key">Languages</div><div class="about-info-val">Bangla · English</div></div>
+          <div class="about-info-item"><div class="about-info-key">Field</div><div class="about-info-val">NLP · Legal-Tech</div></div>
+          <div class="about-info-item"><div class="about-info-key">Available</div><div class="about-info-val">Research &amp; advisory</div></div>
+        </div>
+
+        <div class="traits">
+          <span class="trait">Dependable</span>
+          <span class="trait">Active listener</span>
+          <span class="trait">Creative</span>
+          <span class="trait">Confident</span>
+        </div>
+
+        <div class="hero-actions about-actions">
+          <a href="./Aleya-Nur-Mohol-Siddika-Senior-Software-Engineer-Finland.pdf"
+             class="btn btn-primary" target="_blank" rel="noopener">Download CV ↓</a>
+          <a href="#contact" class="btn btn-ghost">Get in touch</a>
         </div>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     RESUME
+     ══════════════════════════════════════════════════════════ -->
+<section id="resume" class="section reveal">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-idx">03 — Resume</div>
+      <h2 class="section-title">A professional <em>journey</em><br/>of research &amp; shipping.</h2>
+      <p class="section-sub">Six milestones, one thread: each role pushed the next layer of system thinking.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-spine" aria-hidden="true"></div>
+
+      <!-- 2025 — even child, year left card right -->
+      <div class="tl-item">
+        <div class="tl-year-block tl-reveal" style="--tl-dir:-28px">
+          <div class="tl-year">2025</div>
+          <div class="tl-role">Doctoral Researcher</div>
+          <div class="tl-org">Univ. of Eastern Finland</div>
+        </div>
+        <div class="tl-dot" aria-hidden="true"></div>
+        <div class="tl-card-slot tl-reveal" style="--tl-dir:28px">
+          <div class="tl-card">
+            <div class="tl-card-tag">School of Computing · INTEL Project</div>
+            <h4 class="tl-card-title">Doctoral Researcher</h4>
+            <div class="tl-card-sub">2025 — Present · Joensuu, Finland</div>
+            <ul class="tl-list">
+              <li>Building a general doctrine of energy law via NLP and network analysis.</li>
+              <li>Published in <strong>ICACIn 2024</strong> and <strong>OuluREPO</strong>.</li>
+              <li>Cross-disciplinary work at the intersection of law and software engineering.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2024 — odd child, card left year right -->
+      <div class="tl-item">
+        <div class="tl-card-slot tl-reveal" style="--tl-dir:-28px">
+          <div class="tl-card">
+            <div class="tl-card-tag">University of Oulu, Finland</div>
+            <h4 class="tl-card-title">M.Sc. Software Engineering</h4>
+            <div class="tl-card-sub">2023 – 2024 · CGPA 4.08 / 5.0</div>
+            <p class="tl-card-desc">Completed an M.Sc. in Software Engineering and Information Systems, with a CGPA of 4.08 / 5.0.</p>
+          </div>
+        </div>
+        <div class="tl-dot" aria-hidden="true"></div>
+        <div class="tl-year-block tl-reveal" style="--tl-dir:28px">
+          <div class="tl-year">2024</div>
+          <div class="tl-role">M.Sc. Graduate</div>
+          <div class="tl-org">University of Oulu</div>
+        </div>
+      </div>
+
+      <!-- 2023 — even child, year left card right -->
+      <div class="tl-item">
+        <div class="tl-year-block tl-reveal" style="--tl-dir:-28px">
+          <div class="tl-year">2023</div>
+          <div class="tl-role">Tech Lead</div>
+          <div class="tl-org">Interlink Technologies</div>
+        </div>
+        <div class="tl-dot" aria-hidden="true"></div>
+        <div class="tl-card-slot tl-reveal" style="--tl-dir:28px">
+          <div class="tl-card">
+            <div class="tl-card-tag">Interlink Technologies Ltd</div>
+            <h4 class="tl-card-title">Tech Lead</h4>
+            <div class="tl-card-sub">Oct 2022 – Jul 2023</div>
+            <ul class="tl-list">
+              <li>Led Bangladesh Government library systems serving <strong>67 districts</strong>.</li>
+              <li>Owned architectural solutions for complex distributed systems.</li>
+              <li>Managed microservices delivering critical government infrastructure.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2022 — odd child, card left year right -->
+      <div class="tl-item">
+        <div class="tl-card-slot tl-reveal" style="--tl-dir:-28px">
+          <div class="tl-card">
+            <div class="tl-card-tag">Nexus Lab</div>
+            <h4 class="tl-card-title">Backend Engineer</h4>
+            <div class="tl-card-sub">Nov 2020 – Sep 2022</div>
+            <ul class="tl-list">
+              <li>Optimised data-fetching pipeline to <strong>0.88s</strong> latency.</li>
+              <li>Engineered blockchain-based payment &amp; escrow platforms.</li>
+              <li>Built REST APIs for microservices using Node.js and Laravel.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tl-dot" aria-hidden="true"></div>
+        <div class="tl-year-block tl-reveal" style="--tl-dir:28px">
+          <div class="tl-year">2022</div>
+          <div class="tl-role">Backend Engineer</div>
+          <div class="tl-org">Nexus Lab</div>
+        </div>
+      </div>
+
+      <!-- 2020 — even child, year left card right -->
+      <div class="tl-item">
+        <div class="tl-year-block tl-reveal" style="--tl-dir:-28px">
+          <div class="tl-year">2020</div>
+          <div class="tl-role">Software Engineer</div>
+          <div class="tl-org">TOiREE IT Services</div>
+        </div>
+        <div class="tl-dot" aria-hidden="true"></div>
+        <div class="tl-card-slot tl-reveal" style="--tl-dir:28px">
+          <div class="tl-card">
+            <div class="tl-card-tag">TOiREE IT &amp; E-Commerce Services</div>
+            <h4 class="tl-card-title">Software Engineer</h4>
+            <div class="tl-card-sub">Nov 2017 – Oct 2020</div>
+            <ul class="tl-list">
+              <li>Reduced manual hotel pricing work by <strong>85%</strong> with custom rating calendar.</li>
+              <li>Built full hotel management system using Laravel (PHP).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2017 — odd child, card left year right -->
+      <div class="tl-item">
+        <div class="tl-card-slot tl-reveal" style="--tl-dir:-28px">
+          <div class="tl-card">
+            <div class="tl-card-tag">American International University-Bangladesh</div>
+            <h4 class="tl-card-title">B.Sc. Software Engineering</h4>
+            <div class="tl-card-sub">2013 – 2017 · CGPA 3.69 / 4.0</div>
+            <p class="tl-card-desc">Foundation in software engineering, data structures, and algorithms at AIUB.</p>
+          </div>
+        </div>
+        <div class="tl-dot" aria-hidden="true"></div>
+        <div class="tl-year-block tl-reveal" style="--tl-dir:28px">
+          <div class="tl-year">2017</div>
+          <div class="tl-role">B.Sc. Graduate</div>
+          <div class="tl-org">AIUB, Bangladesh</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     STACK
+     ══════════════════════════════════════════════════════════ -->
+<section id="stack" class="section reveal">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-idx">04 — Stack</div>
+      <h2 class="section-title">A precision <em>toolkit</em><br/>built over a decade.</h2>
+      <div class="stack-stats">
+        <div class="stat-pill"><span class="stat-num">8+</span><span class="stat-lbl">Years<br/>experience</span></div>
+        <div class="stat-pill"><span class="stat-num">15+</span><span class="stat-lbl">Key<br/>projects</span></div>
+        <div class="stat-pill"><span class="stat-num">02</span><span class="stat-lbl">Publications<br/>2024</span></div>
+      </div>
+    </div>
+
+    <div class="stack-grid">
+
+      <!-- Intelligence / NLP card -->
+      <div class="skill-card card-reveal">
+        <div class="skill-card-hd">
+          <div class="sc-icon indigo">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="20" r="2"/>
+              <circle cx="12" cy="12" r="2.5"/>
+              <path d="M7.5 7.5l3 3M16.5 7.5l-3 3M12 14.5v3.5"/>
+            </svg>
+          </div>
+          <h3>Intelligence Systems</h3>
+        </div>
+        <p>NLP, machine learning, and ETL pipelines. Specialising in legal-tech innovation through data-driven architectures and graph-style reasoning over legal corpora.</p>
+        <div class="skill-bars">
+          <div class="sb-row"><div class="sb-top"><span>NLP</span><span class="sb-pct">90%</span></div><div class="sb-track"><div class="sb-fill" style="--pct:90%"></div></div></div>
+          <div class="sb-row"><div class="sb-top"><span>Machine Learning</span><span class="sb-pct">90%</span></div><div class="sb-track"><div class="sb-fill" style="--pct:90%"></div></div></div>
+          <div class="sb-row"><div class="sb-top"><span>Python</span><span class="sb-pct">100%</span></div><div class="sb-track"><div class="sb-fill" style="--pct:100%"></div></div></div>
+          <div class="sb-row"><div class="sb-top"><span>SQL</span><span class="sb-pct">90%</span></div><div class="sb-track"><div class="sb-fill" style="--pct:90%"></div></div></div>
+          <div class="sb-row"><div class="sb-top"><span>ETL / Data Pipeline</span><span class="sb-pct">70%</span></div><div class="sb-track"><div class="sb-fill" style="--pct:70%"></div></div></div>
+          <div class="sb-row"><div class="sb-top"><span>Temporal Network Analysis</span><span class="sb-pct">50%</span></div><div class="sb-track"><div class="sb-fill" style="--pct:50%"></div></div></div>
+          <div class="sb-row"><div class="sb-top"><span>R</span><span class="sb-pct">40%</span></div><div class="sb-track"><div class="sb-fill" style="--pct:40%"></div></div></div>
+        </div>
+      </div>
+
+      <!-- Frameworks card -->
+      <div class="tools-card card-reveal">
+        <div class="skill-card-hd">
+          <div class="sc-icon sky">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/><path d="M3 17l9 5 9-5"/>
+            </svg>
+          </div>
+          <h3>Tools &amp; Frameworks</h3>
+        </div>
+        <p>The stack I reach for when precision and reliability matter.</p>
+        <div class="skill-bars">
+          <div class="sb-row"><div class="sb-top"><span>scikit-learn</span><span class="sb-pct">90%</span></div><div class="sb-track"><div class="sb-fill sky-bar" style="--pct:90%"></div></div></div>
+          <div class="sb-row"><div class="sb-top"><span>PyTorch</span><span class="sb-pct">80%</span></div><div class="sb-track"><div class="sb-fill sky-bar" style="--pct:80%"></div></div></div>
+          <div class="sb-row"><div class="sb-top"><span>TensorFlow / Keras</span><span class="sb-pct">70%</span></div><div class="sb-track"><div class="sb-fill sky-bar" style="--pct:70%"></div></div></div>
+          <div class="sb-row"><div class="sb-top"><span>Transformers (HuggingFace)</span><span class="sb-pct">80%</span></div><div class="sb-track"><div class="sb-fill sky-bar" style="--pct:80%"></div></div></div>
+          <div class="sb-row"><div class="sb-top"><span>spaCy / NLTK / TextBlob</span><span class="sb-pct">90%</span></div><div class="sb-track"><div class="sb-fill sky-bar" style="--pct:90%"></div></div></div>
+          <div class="sb-row"><div class="sb-top"><span>Microservices / Node.js</span><span class="sb-pct">90%</span></div><div class="sb-track"><div class="sb-fill sky-bar" style="--pct:90%"></div></div></div>
+        </div>
+        <div class="chip-cloud">
+          <span class="chip">FastAPI</span><span class="chip">Laravel</span><span class="chip">Node.js</span>
+          <span class="chip">PostgreSQL</span><span class="chip">Docker</span><span class="chip">Pandas</span>
+          <span class="chip">NumPy</span><span class="chip">Git</span><span class="chip">REST API</span>
+          <span class="chip">Blockchain</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     PROJECTS
+     ══════════════════════════════════════════════════════════ -->
+<section id="projects" class="section reveal">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-idx">05 — Projects</div>
+      <h2 class="section-title">Selected <em>work.</em></h2>
+      <p class="section-sub">Research and production work drawn from my experience across legal-tech, public systems, financial platforms, and hospitality software.</p>
+    </div>
+
+    <div class="projects-grid">
+
+      <div class="proj-card card-reveal">
+        <div class="proj-visual pv-indigo">
+          <div class="pv-blob pv-blob-a"></div><div class="pv-blob pv-blob-b"></div>
+          <div class="pv-icon">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+              <circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/>
+              <circle cx="12" cy="12" r="2.5"/>
+              <path d="M7.5 7.5l3 3M16.5 7.5l-3 3M12 14.5v3.5"/>
+            </svg>
+          </div>
+        </div>
+        <div class="proj-num">P · 01</div>
+        <h4 class="proj-title">INTEL Project · Energy Law</h4>
+        <p class="proj-desc">Doctoral research advancing the general doctrine of energy law through NLP, network analysis, and legal concept research.</p>
+        <div class="proj-tags"><span class="proj-tag">NLP</span><span class="proj-tag">Research</span><span class="proj-tag">UEF</span></div>
+      </div>
+
+      <div class="proj-card card-reveal">
+        <div class="proj-visual pv-sky">
+          <div class="pv-blob pv-blob-a"></div><div class="pv-blob pv-blob-b"></div>
+          <div class="pv-icon">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/>
+              <circle cx="7" cy="7" r="1"/><circle cx="7" cy="17" r="1"/>
+              <path d="M11 7h6M11 17h6"/>
+            </svg>
+          </div>
+        </div>
+        <div class="proj-num">P · 02</div>
+        <h4 class="proj-title">Library &amp; Archive Systems</h4>
+        <p class="proj-desc">Architectural and microservice work for Bangladesh Government library systems used across 67 districts.</p>
+        <div class="proj-tags"><span class="proj-tag">Microservices</span><span class="proj-tag">Public Sector</span></div>
+      </div>
+
+      <div class="proj-card card-reveal">
+        <div class="proj-visual pv-amber">
+          <div class="pv-blob pv-blob-a"></div><div class="pv-blob pv-blob-b"></div>
+          <div class="pv-icon">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/><path d="M10 8h3.5a2 2 0 0 1 0 4H10v4M10 12h3.5"/>
+            </svg>
+          </div>
+        </div>
+        <div class="proj-num">P · 03</div>
+        <h4 class="proj-title">Blockchain Payment &amp; Escrow</h4>
+        <p class="proj-desc">Backend work on cryptocurrency-based payment, escrow, staking, and swapping platforms at Nexus Lab.</p>
+        <div class="proj-tags"><span class="proj-tag">Backend</span><span class="proj-tag">Blockchain</span></div>
+      </div>
+
+      <div class="proj-card card-reveal">
+        <div class="proj-visual pv-green">
+          <div class="pv-blob pv-blob-a"></div><div class="pv-blob pv-blob-b"></div>
+          <div class="pv-icon">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+              <path d="M13 3L4 14h7l-1 7 9-11h-7z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="proj-num">P · 04</div>
+        <h4 class="proj-title">Hotel Management Software</h4>
+        <p class="proj-desc">Laravel-based operations software and a custom pricing calendar that reduced manual administrative work by 85%.</p>
+        <div class="proj-tags"><span class="proj-tag">Laravel</span><span class="proj-tag">Operations</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     CONTACT
+     ══════════════════════════════════════════════════════════ -->
+<section id="contact" class="section reveal">
+  <div class="section-inner">
+    <div class="contact-card">
+      <div class="contact-inner">
+        <div class="cc-glow-a" aria-hidden="true"></div>
+        <div class="cc-glow-b" aria-hidden="true"></div>
+        <div class="cc-grid" aria-hidden="true"></div>
+
+        <div class="cc-split">
+
+          <!-- Formal portrait -->
+          <div class="cc-portrait-col">
+            <div class="cc-portrait-frame">
+              <img src="img/portrait-formal.jpg"
+                   alt="Aleya Nur Mohol Siddika — formal portrait"
+                   class="cc-portrait-img" />
+            </div>
+            <div class="cc-portrait-cap">
+              <span class="cc-portrait-name">Aleya Nur Mohol Siddika</span>
+              <span class="cc-portrait-role">Doctoral Researcher · UEF</span>
+            </div>
+          </div>
+
+          <!-- CTA content -->
+          <div class="cc-content">
+            <h2>Let's build something <em>lucid.</em></h2>
+            <p>Open to collaboration on AI research, legal-tech, and advanced software architecture.<br/>The fastest answer is a short, specific email.</p>
+            <div class="cc-actions">
+              <a href="mailto:aleyasiddika01@gmail.com" class="btn-white">
+                aleyasiddika01@gmail.com ↗
+              </a>
+              <a href="https://www.linkedin.com/in/aleya-nur-mohol-siddika/" class="btn-glass" target="_blank" rel="noopener">LinkedIn</a>
+              <a href="https://github.com/AleyaSiddika" class="btn-glass" target="_blank" rel="noopener">GitHub</a>
+            </div>
+            <div class="cc-meta">
+              <span>+358 417 231 362</span>
+              <span>·</span>
+              <span>Joensuu, Finland</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">
+        <span class="brand-dot"></span>
+        <span>ALEYA NUR MOHOL SIDDIKA</span>
+      </div>
+      <p class="footer-copy">© 2026 · Doctoral Researcher &amp; Software Engineer · Joensuu, Finland</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://github.com/AleyaSiddika" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/aleya-nur-mohol-siddika/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:aleyasiddika01@gmail.com">Email</a>
+      <a href="./Aleya-Nur-Mohol-Siddika-Senior-Software-Engineer-Finland.pdf" target="_blank" rel="noopener">CV</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/index.js"></script>
 </body>
-
 </html>

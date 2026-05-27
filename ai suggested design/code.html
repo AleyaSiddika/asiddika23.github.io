@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ALEYA NUR MOHOL SIDDIKA | 3D Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#4648d4",
+                        "secondary": "#006591",
+                        "tertiary": "#904900",
+                        "background": "#f8f9ff",
+                        "surface": "#ffffff",
+                        "on-surface": "#0b1c30",
+                        "on-surface-variant": "#464554",
+                        "primary-container": "#6063ee",
+                        "surface-container-low": "#eff4ff",
+                        "outline": "#767586",
+                        "outline-variant": "#c7c4d7"
+                    },
+                    "fontFamily": {
+                        "mono": ["JetBrains Mono", "monospace"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        :root {
+            --scroll-y: 0;
+            --mouse-x: 0.5;
+            --mouse-y: 0.5;
+            --tilt-x: 0deg;
+            --tilt-y: 0deg;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: #f8f9ff;
+            overflow-x: hidden;
+            perspective: 1200px;
+        }
+
+        /* 3D Perspective Grid */
+        .perspective-grid {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                linear-gradient(to right, rgba(70, 72, 212, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(70, 72, 212, 0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+            transform: rotateX(60deg) translateY(calc(var(--scroll-y) * -0.1px));
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* 3D Glassmorphism */
+        .glass-3d {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 
+                0 20px 40px -10px rgba(0, 0, 0, 0.05),
+                0 10px 20px -5px rgba(0, 0, 0, 0.03),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.5),
+                0 0 0 1px rgba(70, 72, 212, 0.05);
+            transition: transform 0.2s ease-out, box-shadow 0.3s ease;
+        }
+
+        .glass-3d:hover {
+            box-shadow: 
+                0 40px 80px -15px rgba(0, 0, 0, 0.08),
+                0 20px 40px -10px rgba(70, 72, 212, 0.1);
+        }
+
+        /* Volumetric Shadow for 3D depth */
+        .volumetric-depth {
+            transform-style: preserve-3d;
+            transform: translateZ(20px) rotateX(var(--tilt-y)) rotateY(var(--tilt-x));
+        }
+
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateZ(30px); }
+            50% { transform: translateY(-20px) translateZ(50px); }
+        }
+
+        .parallax-layer {
+            transition: transform 0.1s linear;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #c0c1ff; border-radius: 10px; }
+
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(50px) translateZ(-50px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0) translateZ(0);
+        }
+
+        .bottom-nav {
+            transform: translateX(-50%) translateZ(100px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Background Grid -->
+<div class="perspective-grid"></div>
+<!-- Navigation Dock (Bottom) -->
+<nav class="fixed bottom-8 left-1/2 bottom-nav z-[100] flex items-center gap-2 p-2 bg-white/80 backdrop-blur-2xl rounded-full border border-white/50 glass-3d">
+<a class="p-3 rounded-full hover:bg-primary/10 text-primary transition-all flex items-center gap-2 group" href="#home">
+<span class="material-symbols-outlined">home</span>
+<span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 font-bold">Home</span>
+</a>
+<a class="p-3 rounded-full hover:bg-primary/10 text-on-surface-variant hover:text-primary transition-all flex items-center gap-2 group" href="#about">
+<span class="material-symbols-outlined">person</span>
+<span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 font-bold">About</span>
+</a>
+<a class="p-3 rounded-full hover:bg-primary/10 text-on-surface-variant hover:text-primary transition-all flex items-center gap-2 group" href="#resume">
+<span class="material-symbols-outlined">description</span>
+<span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 font-bold">Resume</span>
+</a>
+<a class="p-3 rounded-full hover:bg-primary/10 text-on-surface-variant hover:text-primary transition-all flex items-center gap-2 group" href="#projects">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 font-bold">Projects</span>
+</a>
+<div class="w-px h-6 bg-outline/20 mx-2"></div>
+<button class="bg-primary text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-primary/30 hover:scale-105 active:scale-95 transition-all">Contact</button>
+</nav>
+<!-- Header / Brand -->
+<header class="fixed top-8 left-0 right-0 z-50 flex justify-center pointer-events-none">
+<div class="flex items-center gap-3 bg-white/40 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 shadow-sm pointer-events-auto">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<span class="font-bold tracking-tighter text-xl">ALEYA.DEV</span>
+</div>
+</header>
+<main class="relative z-10 pt-48 pb-32 max-w-7xl mx-auto px-6 space-y-48">
+<!-- Hero Section -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center min-h-[70vh]" id="home">
+<div class="lg:col-span-7 space-y-8 parallax-layer" data-speed="0.05">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-xs font-bold uppercase tracking-widest">Open for Research Collaboration</span>
+</div>
+<h1 class="text-5xl md:text-7xl font-bold text-on-surface leading-[1.1] tracking-tight">
+                    Engineering <span class="text-primary italic">Lucid</span> Solutions for a Complex World.
+                </h1>
+<p class="text-lg text-on-surface-variant max-w-xl leading-relaxed">
+                    Doctoral Researcher at the University of Eastern Finland. Bridging the gap between theoretical research and scalable industry solutions.
+                </p>
+<div class="flex flex-wrap gap-6 pt-4">
+<button class="bg-primary text-white px-10 py-4 rounded-2xl font-bold text-lg shadow-2xl shadow-primary/40 hover:-translate-y-1 transition-all">Explore Research</button>
+<a class="glass-3d px-10 py-4 rounded-2xl font-bold text-lg flex items-center gap-3 hover:-translate-y-1 transition-all" href="https://github.com/AleyaSiddika">
+                        GitHub <span class="material-symbols-outlined">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Hero 3D Card -->
+<div class="lg:col-span-5 relative flex justify-center items-center">
+<div class="volumetric-depth relative w-full max-w-md aspect-square" id="hero-card-3d">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-[3rem] -rotate-6 blur-2xl"></div>
+<!-- Main Card -->
+<div class="glass-3d rounded-[3rem] p-4 h-full relative overflow-hidden group">
+<img alt="Aleya Siddika" class="w-full h-full object-cover rounded-[2.5rem] transform group-hover:scale-105 transition-all duration-700" src="https://lh3.googleusercontent.com/aida/ADBb0ugSylD_S9OrrR8HRBBCHg9Qhu3m3xKS0IpLnU_ozi5UJRXdjyxEbysWi_r4yguU0oNZE4vjecG_0klDiD9zLoRCNkdRvxZ5ryCIU7YzhQes7goVMBV8OevSNcyXv7pVj7Dig4qVHo8QR1MB_ARh9k6Vqk6E7NWI-bxtr2rl31w2bbUexmmjTEQaZHUIn9tEcqatWLzV3Mk6k8yv_0Fsp2sMgXKseDOcwhdd25d4z0D-lQKNXhppvYmwN-Rh"/>
+<div class="absolute bottom-6 left-6 right-6 p-6 glass-3d rounded-2xl border-white/40">
+<h2 class="text-2xl font-bold mb-1">Aleya Siddika</h2>
+<p class="text-sm font-medium text-on-surface-variant">Doctoral Researcher &amp; <span class="text-primary">Software Engineer</span></p>
+</div>
+</div>
+<!-- Floating Accessory -->
+<div class="absolute -top-10 -right-10 glass-3d p-6 rounded-3xl floating-element shadow-2xl">
+<div class="flex items-center gap-4">
+<div class="p-3 bg-primary rounded-xl text-white">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase text-on-surface-variant">Active</p>
+<p class="text-lg font-bold text-primary">INTEL Project</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="reveal-on-scroll space-y-16" id="about">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+<div class="relative order-2 lg:order-1">
+<div class="absolute -inset-10 bg-secondary/5 rounded-full blur-[100px] pointer-events-none"></div>
+<img alt="Aleya Nur Mohol Siddika" class="w-full max-w-md mx-auto rounded-[3rem] glass-3d p-2 shadow-2xl transform rotate-2" src="https://lh3.googleusercontent.com/aida/ADBb0ugfX-4AAOCxhXtBrV-5XoKIx7LJYM321sPzAVUgca39SUxMMZhGwqJr9ZYIHvUlEFIPsni2-TnHrOEExps6Jt8u5xSdXVDuv7r9UDlDdePPb1GSKrNEYsA8TjeXLgKAC8deyGPlJR3YDviAN0a5p4SHyBLjkQQJZMXaKGCsN7V9c9vHHCei6psIdiz4Cxtq4HxMhWIKYmgWM9Mhq7lKFiCaaDhm_8_gI7wHSkBOUEoFjuKYroaqCtj7F6rJ"/>
+<div class="absolute -bottom-8 -left-8 glass-3d p-8 rounded-3xl max-w-xs shadow-xl parallax-layer" data-speed="0.08">
+<h4 class="text-lg font-bold mb-3 text-secondary">Interpersonal Traits</h4>
+<ul class="space-y-2">
+<li class="flex items-center gap-2 text-sm font-bold"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Dependable</li>
+<li class="flex items-center gap-2 text-sm font-bold"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Active listener</li>
+<li class="flex items-center gap-2 text-sm font-bold"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Creative</li>
+<li class="flex items-center gap-2 text-sm font-bold"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Confident</li>
+</ul>
+</div>
+</div>
+<div class="space-y-8 order-1 lg:order-2">
+<h2 class="text-4xl md:text-5xl font-bold">About Me</h2>
+<h3 class="text-2xl font-semibold text-secondary">I'm Aleya Nur Mohol Siddika, a Software Engineer</h3>
+<div class="space-y-6 text-lg text-on-surface-variant leading-relaxed">
+<p>
+                            I'm <span class="font-bold text-on-surface">Aleya Nur Mohol Siddika</span>, a Doctoral Researcher at the University of Eastern Finland, working on the <span class="italic">INTEL Project</span> — advancing the general doctrine of energy law through NLP and network analysis.
+                        </p>
+<p>
+                            I hold an M.Sc. in Software Engineering from the University of Oulu. My career includes roles as <span class="font-bold text-on-surface">Tech Lead</span> and <span class="font-bold text-on-surface">AI Researcher</span>, with core expertise in Machine Learning, Python, and Microservice Architecture.
+                        </p>
+</div>
+<div class="grid grid-cols-2 gap-8 pt-6">
+<div>
+<p class="text-xs font-bold uppercase text-primary mb-2">Location</p>
+<p class="text-lg font-bold">Joensuu, Finland</p>
+</div>
+<div>
+<p class="text-xs font-bold uppercase text-primary mb-2">Languages</p>
+<p class="text-lg font-bold">Bangla, English</p>
+</div>
+</div>
+<div class="pt-8 flex gap-4">
+<a class="bg-on-surface text-white px-8 py-4 rounded-xl font-bold flex items-center gap-3 hover:bg-primary transition-colors" href="#">
+                            Download CV <span class="material-symbols-outlined">download</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Experience Timeline -->
+<section class="space-y-24" id="resume">
+<div class="text-center space-y-4">
+<h2 class="text-4xl md:text-6xl font-bold">Resume</h2>
+<p class="text-xl text-on-surface-variant">A professional journey of engineering and research.</p>
+</div>
+<div class="relative max-w-5xl mx-auto px-4">
+<!-- Vertical Line -->
+<div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary/5 via-primary/30 to-primary/5 -translate-x-1/2 hidden md:block"></div>
+<div class="space-y-32">
+<!-- 2025 -->
+<div class="relative flex flex-col md:flex-row items-center gap-12 reveal-on-scroll">
+<div class="md:w-1/2 md:text-right">
+<span class="text-7xl font-black text-primary/10">2025</span>
+<h4 class="text-2xl font-bold mt-2">Doctoral Researcher</h4>
+<p class="text-primary font-bold">University of Eastern Finland</p>
+</div>
+<div class="w-8 h-8 rounded-full bg-white border-4 border-primary absolute left-1/2 -translate-x-1/2 hidden md:block z-10 shadow-lg"></div>
+<div class="md:w-1/2 glass-3d p-8 rounded-[2rem] border-l-4 border-l-primary">
+<p class="text-sm font-bold uppercase text-on-surface-variant mb-2">INTEL Project | School of Computing</p>
+<ul class="space-y-3 text-on-surface-variant text-sm">
+<li class="flex gap-2"><span>•</span> Building a general doctrine of energy law through NLP and network analysis.</li>
+<li class="flex gap-2"><span>•</span> Published in ICACIn 2024 and OuluREPO.</li>
+</ul>
+</div>
+</div>
+<!-- 2023 -->
+<div class="relative flex flex-col md:flex-row items-center gap-12 flex-row-reverse reveal-on-scroll">
+<div class="md:w-1/2 md:text-left">
+<span class="text-7xl font-black text-secondary/10">2023</span>
+<h4 class="text-2xl font-bold mt-2">Tech Lead</h4>
+<p class="text-secondary font-bold">Interlink Technologies Ltd</p>
+</div>
+<div class="w-8 h-8 rounded-full bg-white border-4 border-secondary absolute left-1/2 -translate-x-1/2 hidden md:block z-10 shadow-lg"></div>
+<div class="md:w-1/2 glass-3d p-8 rounded-[2rem] border-r-4 border-r-secondary">
+<p class="text-sm font-bold uppercase text-on-surface-variant mb-2">Government Projects &amp; Microservices</p>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                                Managed architectural solutions for Bangladesh Government systems. Led microservices development across 67 districts.
+                            </p>
+</div>
+</div>
+<!-- 2022 -->
+<div class="relative flex flex-col md:flex-row items-center gap-12 reveal-on-scroll">
+<div class="md:w-1/2 md:text-right">
+<span class="text-7xl font-black text-tertiary/10">2022</span>
+<h4 class="text-2xl font-bold mt-2">Backend Engineer</h4>
+<p class="text-tertiary font-bold">Nexus Lab</p>
+</div>
+<div class="w-8 h-8 rounded-full bg-white border-4 border-tertiary absolute left-1/2 -translate-x-1/2 hidden md:block z-10 shadow-lg"></div>
+<div class="md:w-1/2 glass-3d p-8 rounded-[2rem] border-l-4 border-l-tertiary">
+<p class="text-sm font-bold uppercase text-on-surface-variant mb-2">Blockchain &amp; FinTech</p>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                                Optimized data fetching to 0.88s. Engineered escrow platforms and payment gateways based on cryptocurrency.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Ecosystem -->
+<section class="space-y-16" id="projects">
+<div class="flex flex-col md:flex-row justify-between items-end gap-8">
+<div class="space-y-4">
+<h2 class="text-4xl md:text-5xl font-bold">Technical Stack</h2>
+<p class="text-lg text-on-surface-variant max-w-xl">A multi-layered ecosystem designed for performance and precision.</p>
+</div>
+<div class="flex gap-4">
+<div class="glass-3d px-6 py-3 rounded-2xl flex items-center gap-3">
+<span class="text-2xl font-bold text-primary">8+</span>
+<span class="text-xs font-bold uppercase text-on-surface-variant leading-tight">Years<br/>Exp</span>
+</div>
+<div class="glass-3d px-6 py-3 rounded-2xl flex items-center gap-3">
+<span class="text-2xl font-bold text-primary">15+</span>
+<span class="text-xs font-bold uppercase text-on-surface-variant leading-tight">Key<br/>Projects</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- NLP Card -->
+<div class="md:col-span-2 glass-3d rounded-[3rem] p-12 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-12 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity">
+<span class="material-symbols-outlined text-[200px]">neurology</span>
+</div>
+<div class="relative z-10 space-y-8">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-4xl text-primary">hub</span>
+<h3 class="text-3xl font-bold">Intelligence Systems</h3>
+</div>
+<p class="text-lg text-on-surface-variant max-w-lg">
+                            Expertise in NLP, Machine Learning, and ETL pipelines. Specializing in Legal-Tech innovation through data-driven architectures.
+                        </p>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="p-6 glass-3d rounded-2xl text-center">
+<p class="text-xs font-bold text-primary mb-1">NLP</p>
+<p class="text-2xl font-bold">90%</p>
+</div>
+<div class="p-6 glass-3d rounded-2xl text-center">
+<p class="text-xs font-bold text-primary mb-1">ML</p>
+<p class="text-2xl font-bold">90%</p>
+</div>
+<div class="p-6 glass-3d rounded-2xl text-center">
+<p class="text-xs font-bold text-primary mb-1">Python</p>
+<p class="text-2xl font-bold">100%</p>
+</div>
+<div class="p-6 glass-3d rounded-2xl text-center">
+<p class="text-xs font-bold text-primary mb-1">SQL</p>
+<p class="text-2xl font-bold">90%</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Tools Stack -->
+<div class="glass-3d rounded-[3rem] p-12 flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-4xl text-secondary mb-6">layers</span>
+<h3 class="text-2xl font-bold mb-4">Frameworks</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container-low rounded-lg text-xs font-bold">PyTorch</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-lg text-xs font-bold">TensorFlow</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-lg text-xs font-bold">scikit-learn</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-lg text-xs font-bold">Microservices</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-lg text-xs font-bold">Transformers</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-lg text-xs font-bold">Laravel</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-lg text-xs font-bold">Node.js</span>
+</div>
+</div>
+<div class="mt-12">
+<img alt="Education Asset" class="rounded-2xl shadow-xl transform rotate-2 group-hover:rotate-0 transition-transform" src="https://lh3.googleusercontent.com/aida/ADBb0uhI46uGXNlwZ6bmxZeZMTyY9Kgh9vNgcFptlRkIpDINGuRGMyomL9JBpy4yAfSSSTfsZ4EuUhm8YUEWI3xC-vQblQzQp4cQDLryvhqbg-c2dl4y1WykyzOuZYDw4-FiUr2ahdU71lS_av4iNyduIr2aXI8G9RrzMzLnZodjjvLS2_UpFxL8TX7WLGBeXu_tVl3xbpSjGi1g1s2R_GYiy6zuV-zRztPXjqAc_bQhS8F5149o34rHLrH0vwQd"/>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="reveal-on-scroll">
+<div class="glass-3d bg-primary rounded-[4rem] p-16 md:p-24 text-center text-white relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at 50% 50%, white 1px, transparent 1px); background-size: 40px 40px;"></div>
+<div class="relative z-10 space-y-8 max-w-3xl mx-auto">
+<h2 class="text-4xl md:text-7xl font-bold leading-tight">Let's build something <span class="italic underline decoration-white/30">lucid</span> together.</h2>
+<p class="text-xl text-white/80">Currently seeking collaborative opportunities in AI research and advanced software architecture. Let's discuss your next breakthrough.</p>
+<div class="flex flex-wrap justify-center gap-6 pt-6">
+<button class="bg-white text-primary px-12 py-5 rounded-2xl font-bold text-xl shadow-2xl hover:scale-105 transition-all">Get in Touch</button>
+<a class="glass-3d border-white/20 px-12 py-5 rounded-2xl font-bold text-xl flex items-center gap-3 hover:bg-white/10 transition-all" href="https://www.linkedin.com/in/aleya-nur-mohol-siddika/">
+                            LinkedIn
+                        </a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="py-24 border-t border-primary/5 bg-white/30 backdrop-blur-sm relative z-10 overflow-hidden">
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div class="space-y-4">
+<p class="text-2xl font-bold tracking-tighter">ALEYA.DEV</p>
+<p class="text-on-surface-variant max-w-xs">© 2024 Aleya Nur Mohol Siddika. All rights reserved. Engineering with precision and care.</p>
+</div>
+<div class="flex flex-wrap gap-8 md:justify-end">
+<a class="font-bold hover:text-primary transition-colors" href="https://github.com/AleyaSiddika">GitHub</a>
+<a class="font-bold hover:text-primary transition-colors" href="https://www.linkedin.com/in/aleya-nur-mohol-siddika/">LinkedIn</a>
+<a class="font-bold hover:text-primary transition-colors" href="#">ResearchGate</a>
+<a class="font-bold hover:text-primary transition-colors" href="#">Scholar</a>
+</div>
+</div>
+</footer>
+<script>
+        // 3D Parallax and Interactive effects
+        const heroCard = document.getElementById('hero-card-3d');
+        const layers = document.querySelectorAll('.parallax-layer');
+        const reveals = document.querySelectorAll('.reveal-on-scroll');
+        
+        // Mouse Tracking for Hero
+        window.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 30; // Tilt max 15deg
+            const y = (e.clientY / window.innerHeight - 0.5) * -30;
+            
+            document.documentElement.style.setProperty('--tilt-x', `${x}deg`);
+            document.documentElement.style.setProperty('--tilt-y', `${y}deg`);
+            
+            // Subtle movement for other layers
+            layers.forEach(layer => {
+                const speed = layer.dataset.speed || 0.02;
+                const tx = (e.clientX - window.innerWidth / 2) * speed;
+                const ty = (e.clientY - window.innerHeight / 2) * speed;
+                layer.style.transform = `translate(${tx}px, ${ty}px)`;
+            });
+        });
+
+        // Scroll Tracking
+        window.addEventListener('scroll', () => {
+            document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}`);
+            
+            // Reveal animations
+            reveals.forEach(reveal => {
+                const top = reveal.getBoundingClientRect().top;
+                if (top < window.innerHeight * 0.8) {
+                    reveal.classList.add('active');
+                }
+            });
+        });
+
+        // Initial check for visible elements
+        window.dispatchEvent(new Event('scroll'));
+        
+        // Mobile touch interaction
+        window.addEventListener('touchmove', (e) => {
+            const touch = e.touches[0];
+            const x = (touch.clientX / window.innerWidth - 0.5) * 20;
+            const y = (touch.clientY / window.innerHeight - 0.5) * -20;
+            document.documentElement.style.setProperty('--tilt-x', `${x}deg`);
+            document.documentElement.style.setProperty('--tilt-y', `${y}deg`);
+        });
+    </script>
+</body></html>
